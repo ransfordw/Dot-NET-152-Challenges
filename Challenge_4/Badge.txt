@@ -1,0 +1,38 @@
+﻿Komodo Insurance is fixing their badging system. 
+
+Here's what they need:
+
+An app that maintains a dictionary of details about employee badge information.
+Essentially, an employee will have a badge number that gives access to a list of doors.
+Each employee has access to different doors. For instance, a developer might have 
+access to Door A1 & A5. A claims agent might have access to B2 & B4.
+
+Your task will be to create the following:
+A badge class that has the following properties:
+	BadgeID
+	List of door names for access
+
+A badge repository that will have methods that do the following:
+1. Create a dictionary of badges. 
+2. The key for the dictionary will be the BadgeID.
+3. The value for the dictionary will be the List of Door Names.
+
+The Program will allow a security staff member to do the following:
+create a new badge.
+update doors on an existing badge.
+delete all doors from an existing badge.
+show a list with all badge numbers and door access, like this:
+
+Key
+Badge #			 Door Access       
+1				 a1, a5, d4			 
+2				 a1, a4, b1, b2		 
+3				 a4, a5				
+
+Out of scope:
+You do not need to consider tying an individual badge to a particular user. Just the Badge # will do.
+
+Be sure to Unit Test your Repository methods.
+
+
+

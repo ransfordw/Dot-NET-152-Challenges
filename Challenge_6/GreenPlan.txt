@@ -1,0 +1,24 @@
+﻿Scenario: 
+
+Komodo Insurance is trying to add a Green Plan for their 
+customers that provides incentives for owning an Electric or 
+Hybrid car. 
+
+Before they are able to configure any pricing or deals, 
+they want to collect general information on Electric, Hybrid, and Gas cars
+so that they can do various comparisons. 
+
+The purpose of the app on this sprint will be to  
+collect, delete, and update data on gas, electric, and hybrid cars. 
+To be more specific, they want to create an app that allows a 
+Komodo Agent to do full CRUD + List on those three types of cars.
+
+For example, a KI employee can go on and create
+a Tesla, add it to an Electric Car list, update it, see the details 
+for the car, and delete it from the Electric Car list. 
+
+They could also see a full list of Electric cars that have been added. 
+They can do the same thing for Gas Cars and Hybrid Cars with the
+eventual hope that the collected data will help with various comparisons. 
+
+Be sure to Unit Test your code.

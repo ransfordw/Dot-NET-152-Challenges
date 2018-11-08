@@ -1,0 +1,11 @@
+﻿Smart Insurance
+
+Komodo wants to work with smart cars and to calculate insurance. The car tracks all
+the data for a driver: how often they speed or follow the speed limit,
+how often they swerve outside of their lane, how often they roll through a stop sign, and 
+how often they follow too closely. 
+
+Write a program that shows premium costs based on a driver's driving habits.
+
+Note: This is very open ended and allows you to be creative. A base premium cost can be
+an estimated number.

@@ -1,0 +1,28 @@
+﻿Scenario: Komodo Insurance is trying to improve their efficiency in 
+spending for company barbecues. They have two booths, an ice cream booth
+and a burger booth. Each employee is given one ticket for each of the booths.
+Each employee can get one burger or one dog with the burger booth ticket. 
+Each employee can get one ice cream cone with their ice cream ticket.
+
+The app will track data about the barbecue after it is over. 
+
+Here's what they want to do:
+They will want to show a total cost for the party. 
+They also want to track total tickets taken at each booth, 
+and total tickets taken at the party.
+
+For the burger booths, they want to calculate the cost of 
+each major type of food: veggie burgers, hamburgers, and hot dogs. 
+(This cost will include the cost of the bun). The cost of ketchup, 
+mustard, plasticware, and napkins can all be dumped in one miscellaneous 
+lump sum property together. 
+
+For treat booths, they want to calculate the cost of each bag of 
+popcorn and each gallon of ice cream. They will also need to collect 
+the total number of tickets taken for this booth. The cost of spoons, 
+bowls, and miscellaneous items can be thrown into one lump sum.
+
+One key result in the program will be for party planners to see a list of all parties 
+with total cost and total tickets taken for an event.
+
+
