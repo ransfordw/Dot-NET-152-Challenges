@@ -43,7 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BoothFactory.cs" />
+    <Compile Include="BoothRepository.cs" />
+    <Compile Include="BurgerBooth.cs" />
+    <Compile Include="ConcreteBoothFactory.cs" />
+    <Compile Include="DessertBooth.cs" />
+    <Compile Include="IBooth.cs" />
+    <Compile Include="Party.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ProgramUI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

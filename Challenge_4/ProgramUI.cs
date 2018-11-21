@@ -9,10 +9,9 @@ namespace Challenge_4
         {
             Badge badge = new Badge();
             BadgeRepository badgeRepo = new BadgeRepository();
-            Dictionary<int, List<string>> BadgeID = badgeRepo.GetDictionary();
+            Dictionary<int, List<string>> badges = badgeRepo.GetDictionary();
             List<string> listOne = new List<string>() { "A1", "A2" };
             Badge one = new Badge(123, listOne);
-
             string response = null;
 
             while (response != "4")
@@ -47,7 +46,7 @@ namespace Challenge_4
                     case "2":
                         Console.WriteLine("Which badge would you like to edit?");
                         var desiredKey = int.Parse(Console.ReadLine());
-                        List<string> newDoorList = BadgeID[desiredKey];
+                        List<string> newDoorList = badges[desiredKey];
                         var doorString = badgeRepo.ListToString(newDoorList);
                         Console.WriteLine($"\nBadge: {desiredKey} has access to doors {doorString}\n");
                         Console.WriteLine($"What would you like to change?\n\t1. Remove a door\n\t2. Add a door\n\t3. Change nothing");
@@ -81,7 +80,7 @@ namespace Challenge_4
                     case "3":
                         Console.WriteLine($"Here is a list of current badges: \n\nBadge ID number\t\tDoor Access\n");
 
-                        foreach (KeyValuePair<int, List<string>> newBadgeID in BadgeID)
+                        foreach (KeyValuePair<int, List<string>> newBadgeID in badges)
                             Console.WriteLine($"{newBadgeID.Key}\t\t{badgeRepo.ListToString(newBadgeID.Value)}");
                         Console.WriteLine("Prese 'enter' to return to main menu.");
                         Console.ReadLine();

@@ -27,10 +27,10 @@ namespace Challenge_1
             _menuItems.Remove(meal);
         }
 
-        public string IngredientsToString(List<string> _ingredients)
+        public string IngredientsToString(List<string> ingredients)
         {
             StringBuilder builder = new StringBuilder();
-            foreach (string ingredient in _ingredients)
+            foreach (string ingredient in ingredients)
             {
                 builder.Append(ingredient).Append(", ");
             }

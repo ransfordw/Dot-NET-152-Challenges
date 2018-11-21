@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Challenge_5
 {
@@ -25,11 +26,12 @@ namespace Challenge_5
                 switch (menuInput)
                 {
                     case 1:
+                        List<Customer> sortedList = customers.OrderBy(c => c.Name).ToList();
                         Console.WriteLine("Name\t\tStatus\t\tEmail");
                         if (customers.Count < 1 || customers.Capacity == 0)
                             Console.WriteLine("It appears there aren't any customers.");
                         else
-                            foreach (Customer c in customers)
+                            foreach (Customer c in sortedList)
                             {
                                 Console.WriteLine($"{c.Name}\t\t{c.Status}\t\t{c.EmailResponse}");
                             }

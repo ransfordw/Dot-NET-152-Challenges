@@ -102,7 +102,7 @@ namespace Challenge_6
                 foreach (Car c in cars)
                 {
                     Console.WriteLine($"{i}. {c.CarMake} \t{c.CarModel} \t{c.FuelType} \t{c.MilesPer}");
-                    i += 1;
+                    i ++;
                 }
                 var menuChoice = int.Parse(Console.ReadLine());
                 return menuChoice;
