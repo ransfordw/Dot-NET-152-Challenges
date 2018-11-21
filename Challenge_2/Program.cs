@@ -10,6 +10,10 @@ namespace Challenge_2
     {
         static void Main(string[] args)
         {
+            ProgramUI program = new ProgramUI();
+            program.Run();
+
+            
         }
     }
 }

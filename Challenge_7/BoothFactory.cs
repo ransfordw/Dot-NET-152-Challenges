@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace Challenge_7
 {
-    class Program
+    abstract class BoothFactory
     {
-        static void Main(string[] args)
-        {
-            ProgramUI program = new ProgramUI();
-            program.Run();
-        }
+        public abstract IBooth GetBooth(int userInput, string name, int ticketsTaken, decimal mainCost, decimal miscCost);
     }
 }
