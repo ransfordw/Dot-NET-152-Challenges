@@ -88,7 +88,7 @@ namespace Challenge_1
                     case 3:
                         foreach (MenuItem meal in menuItems)
                         {
-                            Console.WriteLine($"Menu item: {meal.MealName} \n Meal Number:  {meal.MealNumber} \n Description: {meal.Description} \n Ingredients: {meal.Ingredients} \n Price: {meal.MealPrice}");
+                            Console.WriteLine($"Menu item: {meal.MealName} \n Meal Number:  {meal.MealNumber} \n Description: {meal.Description} \n Ingredients: {meal.Ingredients} \n Price: {meal.MealItemPrice}");
                         }
                         Console.WriteLine("Press 'Enter' to return to menu.");
                         Console.ReadLine();
