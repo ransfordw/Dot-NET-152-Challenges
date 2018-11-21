@@ -19,7 +19,7 @@ namespace Challenge_1
             MealName = mealName;
             Description = description;
             Ingredients = ingredients;
-            MealItemPrice = price;
+            MealPrice = price;
         }
 
         //Properties
@@ -27,6 +27,6 @@ namespace Challenge_1
         public string MealName { get; set; }
         public string Description { get; set; }
         public string Ingredients { get; set; }
-        public decimal MealItemPrice { get; set; }
+        public decimal MealPrice { get; set; }
     }
 }
