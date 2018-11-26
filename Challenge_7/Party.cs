@@ -14,7 +14,7 @@ namespace Challenge_7
         public int TotalTickets { get; set; }
         public object PartyName { get; internal set; }
 
-        public Party(string name, IBooth burgerBooth,   dessertBooth)
+        public Party(string name, BurgerBooth burgerBooth,  DessertBooth dessertBooth)
         {
             PartyName = name;
             BurgerBooth = burgerBooth;

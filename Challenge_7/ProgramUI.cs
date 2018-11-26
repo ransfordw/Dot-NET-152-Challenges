@@ -15,7 +15,7 @@ namespace Challenge_7
         {
             booths = _boothRepo.GetBooths();
             _parties = _boothRepo.GetParties();
-            Console.WriteLine("Welcome to the Komodo Party Planning Service!");
+            Console.WriteLine("Welcome to the Komodo Party Planning Committee!");
             bool isRunning = true;
             while (isRunning)
             {
@@ -32,43 +32,36 @@ namespace Challenge_7
                     case 1:
                         Console.WriteLine("What kind of booth would you like to create?\n\t1. Burger\n\t2. Dessert");
                         var boothTypeResponse = int.Parse(Console.ReadLine());
-                        _booth = _boothMaker.GetBooth(boothTypeResponse, GetBoothName(),GetTotalTickets(), GetMainItemCost(boothTypeResponse), _boothRepo.GetMiscCost(boothTypeResponse));
+                        _booth = _boothMaker.GetBooth(boothTypeResponse, GetBoothName(), GetTotalTickets(), GetMainItemCost(boothTypeResponse), _boothRepo.GetMiscCost(boothTypeResponse));
                         _boothRepo.AddBoothToList(_booth);
                         break;
                     case 2:
                         Console.WriteLine("What is the name of you r party?");
                         var name = Console.ReadLine();
-                        int i = 1;
-                        Console.WriteLine("Which Burger booth did your party have?");
-                        List<IBooth> newBooths = new List<IBooth>();
-                        //List<DessertBooth> desserts = new List<DessertBooth>();
+
+                        List<BurgerBooth> burgers = new List<BurgerBooth>();
+                        List<DessertBooth> desserts = new List<DessertBooth>();
+
                         foreach(IBooth booth in booths)
                         {
-                            if (booth is BurgerBooth)
-                            {
-                                Console.WriteLine($"{i}. {booth.BoothName}");
-                                newBooths.Add(booth);
-                                i++;
-                            }
+                            if (booth.GetType() == typeof(BurgerBooth))
+                                burgers.Add((BurgerBooth)booth);
+                            else
+                                desserts.Add((DessertBooth)booth);
                         }
+
+                        Console.WriteLine("Which Burger booth did your party have?");
+                        PrintBooths(burgers);
                         var burgerChoiceInt = int.Parse(Console.ReadLine());
-                        var burgerChoice = newBooths[burgerChoiceInt - 1];
-                        newBooths.Clear();
-                        i = 0;
+                        var burgerChoice = burgers[burgerChoiceInt - 1];
+
                         Console.WriteLine("Which Dessert booth did your party have?");
-                        foreach (IBooth booth in booths)
-                        {
-                            if (booth is DessertBooth)
-                            {
-                                Console.WriteLine($"{i}. {booth.BoothName}");
-                                newBooths.Add(booth);
-                                i++;
-                            }
-                        }
+                        PrintBooths(desserts);
+
                         var dessertChoiceInt = int.Parse(Console.ReadLine());
-                        var dessertChoice = newBooths[dessertChoiceInt - 1];
-                        
-                       Party party = new Party(name, burgerChoice, dessertChoice);
+                        var dessertChoice = desserts[dessertChoiceInt - 1];
+
+                        Party party = new Party(name, burgerChoice, dessertChoice);
                         break;
                     case 3:
                         i = 0;
@@ -79,7 +72,7 @@ namespace Challenge_7
                             i++;
                         }
                         var input = int.Parse(Console.ReadLine());
-                        Console.WriteLine(_parties[input -1]);
+                        Console.WriteLine(_parties[input - 1]);
                         break;
                     case 4:
                         Console.WriteLine("Booth Name\tTickets Taken");
@@ -93,7 +86,7 @@ namespace Challenge_7
                         Console.ReadLine();
                         break;
                     case 5:
-                        foreach(Party p in _parties)
+                        foreach (Party p in _parties)
                         {
                             Console.WriteLine($"{p.PartyName}");
                         }
@@ -132,6 +125,25 @@ namespace Challenge_7
             Console.Write("How many tickets were recieved at this booth: ");
             var ticketsRecieved = int.Parse(Console.ReadLine());
             return ticketsRecieved;
+        }
+
+        private void PrintBooths(List<BurgerBooth> booths)
+        {
+            int i = 1;
+            foreach (IBooth booth in booths)
+            {
+                Console.WriteLine($"{i}. {booth.BoothName}");
+                i++;
+            }
+        }
+        private void PrintBooths(List<DessertBooth> booths)
+        {
+            int i = 1;
+            foreach (IBooth booth in booths)
+            {
+                Console.WriteLine($"{i}. {booth.BoothName}");
+                i++;
+            }
         }
     }
 }
