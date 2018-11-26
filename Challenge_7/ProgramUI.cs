@@ -38,28 +38,26 @@ namespace Challenge_7
                     case 2:
                         Console.WriteLine("What is the name of you r party?");
                         var name = Console.ReadLine();
-                        int i = 1;
-                        Console.WriteLine("Which Burger booth did your party have?");
+
                         List<BurgerBooth> burgers = new List<BurgerBooth>();
                         List<DessertBooth> desserts = new List<DessertBooth>();
 
-                        foreach (BurgerBooth booth in booths)
+                        foreach(IBooth booth in booths)
                         {
-                            Console.WriteLine($"{i}. {booth.BoothName}");
-                            burgers.Add(booth);
-                            i++;
+                            if (booth.GetType() == typeof(BurgerBooth))
+                                burgers.Add((BurgerBooth)booth);
+                            else
+                                desserts.Add((DessertBooth)booth);
                         }
+
+                        Console.WriteLine("Which Burger booth did your party have?");
+                        PrintBooths(burgers);
                         var burgerChoiceInt = int.Parse(Console.ReadLine());
                         var burgerChoice = burgers[burgerChoiceInt - 1];
-                        i = 1;
 
                         Console.WriteLine("Which Dessert booth did your party have?");
-                        foreach (DessertBooth booth in booths)
-                        {
-                            Console.WriteLine($"{i}. {booth.BoothName}");
-                            desserts.Add(booth);
-                            i++;
-                        }
+                        PrintBooths(desserts);
+
                         var dessertChoiceInt = int.Parse(Console.ReadLine());
                         var dessertChoice = desserts[dessertChoiceInt - 1];
 
@@ -127,6 +125,25 @@ namespace Challenge_7
             Console.Write("How many tickets were recieved at this booth: ");
             var ticketsRecieved = int.Parse(Console.ReadLine());
             return ticketsRecieved;
+        }
+
+        private void PrintBooths(List<BurgerBooth> booths)
+        {
+            int i = 1;
+            foreach (IBooth booth in booths)
+            {
+                Console.WriteLine($"{i}. {booth.BoothName}");
+                i++;
+            }
+        }
+        private void PrintBooths(List<DessertBooth> booths)
+        {
+            int i = 1;
+            foreach (IBooth booth in booths)
+            {
+                Console.WriteLine($"{i}. {booth.BoothName}");
+                i++;
+            }
         }
     }
 }
