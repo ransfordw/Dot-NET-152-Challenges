@@ -16,11 +16,11 @@ namespace Challenge_7
             _booths = _boothRepo.GetBooths();
             _parties = _boothRepo.GetParties();
             SeedData();
-            GetBoothTickets();
             Console.WriteLine("Welcome to the Komodo Party Planning Committee!");
             bool isRunning = true;
             while (isRunning)
             {
+                GetBoothTickets();
                 Console.WriteLine("What would you like to do?\n\t" +
                     "1. Create a new booth \n\t" +
                     "2. Create a new party\n\t" +
