@@ -12,7 +12,7 @@
 
         public int TotalTickets
         {
-            get { return _totalTickets; }
+            get => _totalTickets;
             set { _totalTickets = BurgerTickets + DessertTickets; }
         }
 

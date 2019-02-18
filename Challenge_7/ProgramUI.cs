@@ -20,7 +20,7 @@ namespace Challenge_7
             bool isRunning = true;
             while (isRunning)
             {
-                GetBoothTickets();
+                _boothRepo.GetBoothTickets();
                 Console.WriteLine("What would you like to do?\n\t" +
                     "1. Create a new booth \n\t" +
                     "2. Create a new party\n\t" +
@@ -91,37 +91,17 @@ namespace Challenge_7
                     case 4:
                         Console.WriteLine("Booth Name\tTickets Taken");
                         foreach (IBooth booth in _booths)
-                        {
-                            if (booth is BurgerBooth)
-                                Console.WriteLine($"{booth.BoothName}: {booth.TicketsTaken}");
-                            else
-                                Console.WriteLine($"{booth.BoothName}: {booth.TicketsTaken}");
-                        }
+                            Console.WriteLine($"{booth.BoothName}: {booth.TicketsTaken}");
+
                         Console.ReadLine();
                         break;
                     case 5:
                         foreach (Party p in _parties)
-                        {
                             Console.WriteLine($"{p.PartyName}");
-                        }
                         Console.ReadLine();
                         break;
                     default:
                         break;
-                }
-            }
-        }
-
-        private void GetBoothTickets()
-        {
-            foreach (var booth in _booths)
-            {
-                foreach (var p in _parties)
-                {
-                    if (p.DessertBooth == booth)
-                        booth.TicketsTaken += p.DessertTickets;
-                    else if (p.BurgerBooth == booth)
-                        booth.TicketsTaken += p.BurgerTickets;
                 }
             }
         }
