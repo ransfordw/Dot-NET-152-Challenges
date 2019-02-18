@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Challenge_7
+﻿namespace Challenge_7
 {
     class Party
     {
@@ -32,7 +26,7 @@ namespace Challenge_7
             BurgerTickets = burgerTix;
             DessertTickets = dessertTix;
             TotalTickets = burgerTix + dessertTix;
-            TotalCost = BurgerBooth.CalculateTotalCost(burgerTix) + DessertBooth.CalculateTotalCost(dessertTix); 
+            TotalCost = BurgerBooth.CalculateTotalCost(burgerTix) + DessertBooth.CalculateTotalCost(dessertTix);
         }
 
         public override string ToString() => $"Party Name: {PartyName}\nBurger Booth Name: {BurgerBooth.BoothName}\nDessert Booth Name: {DessertBooth.BoothName}\nTotal Tickets: {TotalTickets}\nTotal Cost: {TotalCost}";
