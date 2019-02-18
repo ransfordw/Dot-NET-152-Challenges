@@ -32,6 +32,7 @@ namespace Challenge_7
             BurgerTickets = burgerTix;
             DessertTickets = dessertTix;
             TotalTickets = burgerTix + dessertTix;
+            TotalCost = BurgerBooth.CalculateTotalCost(burgerTix) + DessertBooth.CalculateTotalCost(dessertTix); 
         }
 
         public override string ToString() => $"Party Name: {PartyName}\nBurger Booth Name: {BurgerBooth.BoothName}\nDessert Booth Name: {DessertBooth.BoothName}\nTotal Tickets: {TotalTickets}\nTotal Cost: {TotalCost}";

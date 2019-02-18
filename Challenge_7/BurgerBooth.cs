@@ -7,20 +7,20 @@
             BoothName = name;
             EntreCost = cost;
             MiscCost = misc;
-            //TotalCost = CalculateTotalCost(tickets, cost, misc);
         }
+
         public BurgerBooth() { }
 
         public decimal EntreCost { get; set; }
         public string BoothName { get; set; }
         public int TicketsTaken { get; set; }
         public decimal MiscCost { get; set; }
-        //public decimal TotalCost { get; set; }
+        public decimal TotalCost { get; set; }
 
-        //public decimal CalculateTotalCost(int tickets, decimal cost, decimal misc)
-        //{
-        //    decimal total = (cost + misc) * tickets;
-        //    return total;
-        //}
+        public decimal CalculateTotalCost(int tickets)
+        {
+            decimal total = (EntreCost + MiscCost) * tickets;
+            return total;
+        }
     }
 }
