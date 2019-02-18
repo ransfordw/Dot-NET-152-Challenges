@@ -12,6 +12,6 @@ namespace Challenge_7
         int TicketsTaken { get; set; }
         decimal MiscCost { get; set; }
 
-        decimal CalculateTotalCost(int tickets, decimal cost, decimal misc);
+        //decimal CalculateTotalCost(int tickets, decimal cost, decimal misc);
     }
 }

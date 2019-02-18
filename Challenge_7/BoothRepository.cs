@@ -39,5 +39,10 @@ namespace Challenge_7
         {
             _repoBooths.Add(booth);
         }
+
+        public void AddPartyToList(Party party)
+        {
+            _repoParties.Add(party);
+        }
     }
 }

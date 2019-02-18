@@ -8,18 +8,30 @@ namespace Challenge_7
 {
     class Party
     {
+        private int _totalTickets;
+
         public BurgerBooth BurgerBooth { get; set; }
         public DessertBooth DessertBooth { get; set; }
+        public int BurgerTickets { get; set; }
+        public int DessertTickets { get; set; }
         public decimal TotalCost { get; set; }
-        public int TotalTickets { get; set; }
-        public object PartyName { get; internal set; }
 
-        public Party(string name, BurgerBooth burgerBooth,  DessertBooth dessertBooth)
+        public int TotalTickets
+        {
+            get { return _totalTickets; }
+            set { _totalTickets = BurgerTickets + DessertTickets; }
+        }
+
+        public string PartyName { get; internal set; }
+
+        public Party(string name, BurgerBooth burgerBooth, int burgerTix, DessertBooth dessertBooth, int dessertTix)
         {
             PartyName = name;
             BurgerBooth = burgerBooth;
             DessertBooth = dessertBooth;
-            TotalTickets = burgerBooth.TicketsTaken + dessertBooth.TicketsTaken;
+            BurgerTickets = burgerTix;
+            DessertTickets = dessertTix;
+            TotalTickets = burgerTix + dessertTix;
         }
 
         public override string ToString() => $"Party Name: {PartyName}\nBurger Booth Name: {BurgerBooth.BoothName}\nDessert Booth Name: {DessertBooth.BoothName}\nTotal Tickets: {TotalTickets}\nTotal Cost: {TotalCost}";
