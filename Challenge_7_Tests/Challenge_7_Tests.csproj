@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="BoothRepository_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BoothFactory_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

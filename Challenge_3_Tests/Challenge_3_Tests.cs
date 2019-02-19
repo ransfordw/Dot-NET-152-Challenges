@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using Challenge_3;
+﻿using Challenge_3;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Challenge_3_Tests 
+namespace Challenge_3_Tests
 {
     [TestClass]
     public class Challenge_3_Tests
@@ -27,7 +25,7 @@ namespace Challenge_3_Tests
         {
             //This test also handles the GetList method
             _outingRepoTest.AddToList(royalPin);
-            
+
             var actual = _outingRepoTest.GetList().Count;
             var expected = 1;
 
