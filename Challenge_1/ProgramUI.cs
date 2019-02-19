@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Challenge_1
 {
-    internal class ProgramUI
+    class ProgramUI
     {
         public void Run()
         {

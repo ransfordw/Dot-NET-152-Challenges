@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Challenge_1
 {
     public class MenuRepository
     {
-
         private List<MenuItem> _menuItems = new List<MenuItem>();
 
         //Methods

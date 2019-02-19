@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Challenge_3
 {
@@ -16,19 +12,23 @@ namespace Challenge_3
         {
             return _outingsList;
         }
+
         public List<Outing> GetNewListByType()
         {
             _outingsByType.RemoveAll(outing => outing.TotalEventCost > 0m);
             return _outingsByType;
         }
+
         public void AddToList(Outing outing)
         {
             _outingsList.Add(outing);
         }
+
         public void AddToListByType(Outing outing)
         {
             _outingsByType.Add(outing);
         }
+
         public EventType EventTypeSwitch(int input)
         {
             switch (input)
@@ -51,15 +51,17 @@ namespace Challenge_3
             }
             return _type;
         }
+
         public void AddOutingToListByType(EventType type)
         {
-            
+
             foreach (Outing outing in _outingsList)
             {
                 if (outing.Category == type)
                     _outingsByType.Add(outing);
             }
         }
+
         public decimal ReturnDesiredCostByType()
         {
             decimal sum = 0m;

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Challenge_6;
+﻿using Challenge_6;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Challenge_6_Tests
@@ -9,7 +7,7 @@ namespace Challenge_6_Tests
     public class Challenege_6_Tests
     {
         private CarRepository _carRepo = new CarRepository();
-        
+
         [TestMethod]
         public void CarRepository_AddCarToList_ShouldIncreaseCountByOne()
         {
@@ -66,7 +64,7 @@ namespace Challenge_6_Tests
             //--Act
             var actual = _carRepo.YesNoResponse(s);
             var expected = true;
-            
+
             //--Assert
             Assert.AreEqual(expected, actual);
         }
@@ -87,7 +85,7 @@ namespace Challenge_6_Tests
             var expected = 1;
 
             //--Assert
-            Assert.AreEqual(expected,actual);
+            Assert.AreEqual(expected, actual);
         }
     }
 }

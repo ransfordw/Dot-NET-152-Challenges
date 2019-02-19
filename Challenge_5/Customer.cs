@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Challenge_5
+﻿namespace Challenge_5
 {
-    public enum CustomerStatus { Current = 1, Past, Potential}
+    public enum CustomerStatus { Current = 1, Past, Potential }
 
     public class Customer
     {
