@@ -10,17 +10,20 @@ namespace Challenge_7
         IBooth _booth;
         List<IBooth> _booths;
         List<Party> _parties;
+        List<BurgerBooth> _burgers;
+        List<DessertBooth> _desserts;
 
         public void Run()
         {
-            _booths = _boothRepo.GetBooths();
+            _booths = _boothRepo.GetAllBooths();
             _parties = _boothRepo.GetParties();
-            SeedData();
+            _boothRepo.SeedData();
             Console.WriteLine("Welcome to the Komodo Party Planning Committee!");
             bool isRunning = true;
             while (isRunning)
             {
                 _boothRepo.GetBoothTickets();
+                _boothRepo.GetBoothsByType();
                 Console.WriteLine("What would you like to do?\n\t" +
                     "1. Create a new booth \n\t" +
                     "2. Create a new party\n\t" +
@@ -41,30 +44,22 @@ namespace Challenge_7
                         Console.WriteLine("What is the name of your party?");
                         var name = Console.ReadLine();
 
-                        List<BurgerBooth> burgers = new List<BurgerBooth>();
-                        List<DessertBooth> desserts = new List<DessertBooth>();
-
-                        foreach (IBooth booth in _booths)
-                        {
-                            if (booth.GetType() == typeof(BurgerBooth))
-                                burgers.Add((BurgerBooth)booth);
-                            else
-                                desserts.Add((DessertBooth)booth);
-                        }
+                        _burgers = _boothRepo.GetBurgerBooths();
+                        _desserts = _boothRepo.GetDessertBooths();
 
                         Console.WriteLine("Which Burger booth did your party have?");
-                        PrintBooths(burgers);
+                        PrintBooths(_burgers);
                         var burgerChoiceInt = int.Parse(Console.ReadLine());
-                        var burgerChoice = burgers[burgerChoiceInt - 1];
+                        var burgerChoice = _burgers[burgerChoiceInt - 1];
 
                         Console.WriteLine($"How many tickets did {burgerChoice.BoothName} recieve?");
                         var burgerTix = int.Parse(Console.ReadLine());
 
                         Console.WriteLine("Which Dessert booth did your party have?");
-                        PrintBooths(desserts);
+                        PrintBooths(_desserts);
 
                         var dessertChoiceInt = int.Parse(Console.ReadLine());
-                        var dessertChoice = desserts[dessertChoiceInt - 1];
+                        var dessertChoice = _desserts[dessertChoiceInt - 1];
 
                         Console.WriteLine($"How many tickets did {dessertChoice.BoothName} recieve?");
                         var dessertTix = int.Parse(Console.ReadLine());
@@ -92,7 +87,6 @@ namespace Challenge_7
                         Console.WriteLine("Booth Name\tTickets Taken");
                         foreach (IBooth booth in _booths)
                             Console.WriteLine($"{booth.BoothName}: {booth.TicketsTaken}");
-
                         Console.ReadLine();
                         break;
                     case 5:
@@ -105,15 +99,6 @@ namespace Challenge_7
                         break;
                 }
             }
-        }
-
-        private void SeedData()
-        {
-            var dessert = new DessertBooth("Mrs. Curl", 3.5m, 0.75m);
-            var burger = new BurgerBooth("Bob's Burgers", 10.99m, 1.2m);
-            _boothRepo.AddBoothToList(dessert);
-            _boothRepo.AddBoothToList(burger);
-            _boothRepo.AddPartyToList(new Party("Holiday Party", burger, 12, dessert, 34));
         }
 
         private decimal GetMainItemCost(int boothTypeResponse)
