@@ -69,6 +69,28 @@ namespace Challenge_7_Tests
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+        public void BoothRepository_GetBoothsByType_ShouldReturnCorrectCount()
+        {
+            BurgerBooth burger = new BurgerBooth();
+            DessertBooth dessert = new DessertBooth();
+
+            _boothRepo.AddBoothToList(burger);
+            _boothRepo.AddBoothToList(burger);
+            _boothRepo.AddBoothToList(dessert);
+
+            _boothRepo.GetBoothsByType();
+
+            var actual = _boothRepo.GetBurgerBooths().Count;
+            var expected = 2;
+
+            var actualTwo = _boothRepo.GetDessertBooths().Count;
+            var expectedTwo = 1;
+
+            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expectedTwo, actualTwo);
+        }
+
         //Add to Lists
         [TestMethod]
         public void BoothRepository_AddBoothToList_ShouldReturnCorrectCounts()
@@ -132,8 +154,8 @@ namespace Challenge_7_Tests
         }
 
         [DataTestMethod]
-        [DataRow(0,34)]
-        [DataRow(1,12)]
+        [DataRow(0, 34)]
+        [DataRow(1, 12)]
         public void BoothRepository_GetBoothTickets_ShouldSetBoothTicketValues(int index, int tickets)
         {
             _boothRepo.SeedData();
@@ -143,6 +165,17 @@ namespace Challenge_7_Tests
 
             var actual = list[index].TicketsTaken;
             var expected = tickets;
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [DataTestMethod]
+        [DataRow(1, 1.25)]
+        [DataRow(2, 0.80)]
+        public void BoothRepository_GetMiscCost_ShouldReturnCorrectCount(int response, double price)
+        {
+            var actual = _boothRepo.GetMiscCost(response);
+            var expected = (decimal)price;
 
             Assert.AreEqual(expected, actual);
         }
