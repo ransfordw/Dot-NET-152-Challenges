@@ -1,6 +1,6 @@
 ﻿namespace Challenge_7
 {
-    class Party
+    public class Party
     {
         private int _totalTickets;
 

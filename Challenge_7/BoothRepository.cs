@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Challenge_7
 {
-    class BoothRepository
+    public class BoothRepository
     {
         private List<IBooth> _repoBooths = new List<IBooth>();
         private List<Party> _repoParties = new List<Party>();
