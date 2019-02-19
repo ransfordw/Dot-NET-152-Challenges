@@ -29,6 +29,11 @@
             TotalCost = CalculateTotalPartyCost();
         }
 
+        public Party()
+        {
+
+        }
+
         public override string ToString() => $"Party Name: {PartyName}\nBurger Booth Name: {BurgerBooth.BoothName}\nDessert Booth Name: {DessertBooth.BoothName}\nTotal Tickets: {TotalTickets}\nTotal Cost: {TotalCost}";
 
         public decimal CalculateTotalPartyCost()

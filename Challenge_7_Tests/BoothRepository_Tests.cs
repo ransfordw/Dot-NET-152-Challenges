@@ -1,5 +1,4 @@
-﻿using System;
-using Challenge_7;
+﻿using Challenge_7;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Challenge_7_Tests
@@ -8,12 +7,15 @@ namespace Challenge_7_Tests
     public class BoothRepository_Tests
     {
         BoothRepository _boothRepo;
+        BurgerBooth _burger;
+        DessertBooth _dessert;
 
         [TestInitialize]
         public void Arrange()
         {
-             _boothRepo = new BoothRepository();
-
+            _boothRepo = new BoothRepository();
+            _burger = new BurgerBooth();
+            _dessert = new DessertBooth();
         }
 
         //Get Lists
@@ -66,5 +68,38 @@ namespace Challenge_7_Tests
 
             Assert.AreEqual(expected, actual);
         }
+
+        //Add to Lists
+        [TestMethod]
+        public void BoothRepository_AddBoothToList_ShouldReturnCorrectCounts()
+        {
+            var booths = _boothRepo.GetAllBooths();
+            _boothRepo.AddBoothToList(_burger);
+
+            var actual = booths.Count;
+            var expected = 1;
+
+            _boothRepo.AddBoothToList(_dessert);
+
+            var actualTwo = booths.Count;
+            var expectedTwo = 2;
+
+            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expectedTwo, actualTwo);
+        }
+
+        [TestMethod]
+        public void BoothRepository_AddPartyToList_ShouldReturnCorrectCount()
+        {
+            var list =_boothRepo.GetParties();
+            _boothRepo.AddPartyToList(new Party());
+
+            var actual = list.Count;
+            var expected = 1;
+
+            Assert.AreEqual(expected, actual);
+        }
+
+
     }
 }
