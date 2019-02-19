@@ -2,26 +2,27 @@
 {
     public class DessertBooth : IBooth
     {
-        public DessertBooth(string name, int tickets, decimal cost, decimal misc)
+        private decimal _totalByTicket;
+
+        public DessertBooth(string name, decimal cost, decimal misc)
         {
             BoothName = name;
-            TicketsTaken = tickets;
             DessertCost = cost;
             MiscCost = misc;
-            TotalCost = CalculateTotalCost(tickets, cost, misc);
+            TotalCostPerTicket = TotalCostPerTicket;
         }
+
         public DessertBooth() { }
 
         public string BoothName { get; set; }
         public int TicketsTaken { get; set; }
         public decimal DessertCost { get; set; }
         public decimal MiscCost { get; set; }
-        public decimal TotalCost { get; set; }
 
-        public decimal CalculateTotalCost(int tickets, decimal cost, decimal misc)
+        public decimal TotalCostPerTicket
         {
-            decimal total = (cost + misc)*tickets;
-            return total;
+            get => _totalByTicket;
+            set { _totalByTicket = DessertCost + MiscCost; }
         }
     }
 }

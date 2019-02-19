@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Challenge_7
 {
@@ -38,6 +34,25 @@ namespace Challenge_7
         public void AddBoothToList(IBooth booth)
         {
             _repoBooths.Add(booth);
+        }
+
+        public void AddPartyToList(Party party)
+        {
+            _repoParties.Add(party);
+        }
+
+        public void GetBoothTickets()
+        {
+            foreach (var booth in _repoBooths)
+            {
+                foreach (var party in _repoParties)
+                {
+                    if (party.DessertBooth == booth)
+                        booth.TicketsTaken += party.DessertTickets;
+                    else if (party.BurgerBooth == booth)
+                        booth.TicketsTaken += party.BurgerTickets;
+                }
+            }
         }
     }
 }
