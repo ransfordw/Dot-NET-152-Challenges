@@ -18,7 +18,7 @@ namespace Challenge_1_Tests
         [TestMethod]
         public void MenuRepository_AddItemToMenu_ShouldIncreaseCountByOne()
         {
-            MenuItem meal = new MenuItem(1, "Broccoli", "Steamed Broccoli", "Broccoli, butter, spices", 2.0m);
+            MenuItem meal = new MenuItem("Broccoli", "Steamed Broccoli", "Broccoli, butter, spices", 2.0m);
             menuRepoTest.AddItemToMenu(meal);
 
             var actual = menuRepoTest.ProduceMenu().Count;
@@ -30,8 +30,8 @@ namespace Challenge_1_Tests
         [TestMethod]
         public void MenuRepository_RemoveItemFromMenu_ShouldReduceCountByOne()
         {
-            MenuItem meal = new MenuItem(1, "Broccoli", "Steamed Broccoli", "Broccoli, butter, spices", 2.0m);
-            MenuItem mealTwo = new MenuItem(2, "Corn", "Steamed corn", "corn, butter, spices", 2.0m);
+            MenuItem meal = new MenuItem("Broccoli", "Steamed Broccoli", "Broccoli, butter, spices", 2.0m);
+            MenuItem mealTwo = new MenuItem("Corn", "Steamed corn", "corn, butter, spices", 2.0m);
             menuRepoTest.AddItemToMenu(meal);
             menuRepoTest.AddItemToMenu(mealTwo);
 
