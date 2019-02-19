@@ -26,9 +26,17 @@
             BurgerTickets = burgerTix;
             DessertTickets = dessertTix;
             TotalTickets = burgerTix + dessertTix;
-            TotalCost = BurgerBooth.CalculateTotalCost(burgerTix) + DessertBooth.CalculateTotalCost(dessertTix);
+            TotalCost = CalculateTotalPartyCost();
         }
 
         public override string ToString() => $"Party Name: {PartyName}\nBurger Booth Name: {BurgerBooth.BoothName}\nDessert Booth Name: {DessertBooth.BoothName}\nTotal Tickets: {TotalTickets}\nTotal Cost: {TotalCost}";
+
+        public decimal CalculateTotalPartyCost()
+        {
+            var burgerTotal = BurgerBooth.TotalCostPerTicket * BurgerTickets;
+            var dessertTotal = DessertBooth.TotalCostPerTicket * DessertTickets;
+
+            return burgerTotal + dessertTotal;
+        }
     }
 }

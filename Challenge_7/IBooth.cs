@@ -5,7 +5,6 @@
         string BoothName { get; set; }
         int TicketsTaken { get; set; }
         decimal MiscCost { get; set; }
-
-        decimal CalculateTotalCost(int tickets);
+        decimal TotalCostPerTicket { get; set; }
     }
 }

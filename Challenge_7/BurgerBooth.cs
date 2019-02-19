@@ -2,11 +2,14 @@
 {
     public class BurgerBooth : IBooth
     {
+        private decimal _totalCostByTicket;
+
         public BurgerBooth(string name, decimal cost, decimal misc)
         {
             BoothName = name;
             EntreCost = cost;
             MiscCost = misc;
+            TotalCostPerTicket = TotalCostPerTicket;
         }
 
         public BurgerBooth() { }
@@ -15,12 +18,11 @@
         public string BoothName { get; set; }
         public int TicketsTaken { get; set; }
         public decimal MiscCost { get; set; }
-        public decimal TotalCost { get; set; }
 
-        public decimal CalculateTotalCost(int tickets)
+        public decimal TotalCostPerTicket
         {
-            decimal total = (EntreCost + MiscCost) * tickets;
-            return total;
+            get => _totalCostByTicket;
+            set { _totalCostByTicket = MiscCost + EntreCost; }
         }
     }
 }

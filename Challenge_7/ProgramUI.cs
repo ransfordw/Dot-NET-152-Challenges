@@ -101,6 +101,7 @@ namespace Challenge_7
                         Console.ReadLine();
                         break;
                     default:
+                        isRunning = false;
                         break;
                 }
             }
