@@ -34,6 +34,18 @@ namespace Challenge_7
             return _repoBooths;
         }
 
+        public List<DessertBooth> GetDessertBooths()
+        {
+            GetBoothsByType();
+            return _repoDesserts;
+        }
+
+        public List<BurgerBooth> GetBurgerBooths()
+        {
+            GetBoothsByType();
+            return _repoBurgers;
+        }
+
         public void AddBoothToList(IBooth booth)
         {
             _repoBooths.Add(booth);
@@ -80,16 +92,6 @@ namespace Challenge_7
                 else
                     _repoDesserts.Add((DessertBooth)booth);
             }
-        }
-
-        public List<DessertBooth> GetDessertBooths()
-        {
-            return _repoDesserts;   
-        }
-
-        public List<BurgerBooth> GetBurgerBooths()
-        {
-            return _repoBurgers;
         }
     }
 }

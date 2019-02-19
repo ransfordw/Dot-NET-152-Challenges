@@ -23,7 +23,6 @@ namespace Challenge_7
             while (isRunning)
             {
                 _boothRepo.GetBoothTickets();
-                _boothRepo.GetBoothsByType();
                 Console.WriteLine("What would you like to do?\n\t" +
                     "1. Create a new booth \n\t" +
                     "2. Create a new party\n\t" +
