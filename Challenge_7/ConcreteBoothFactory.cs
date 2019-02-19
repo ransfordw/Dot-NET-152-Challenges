@@ -1,6 +1,6 @@
 ﻿namespace Challenge_7
 {
-    class ConcreteBoothFactory : BoothFactory
+    public class ConcreteBoothFactory : BoothFactory
     {
         public override IBooth GetBooth(int userInput, string name, decimal mainCost, decimal miscCost)
         {
