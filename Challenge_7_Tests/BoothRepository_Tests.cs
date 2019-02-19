@@ -91,7 +91,7 @@ namespace Challenge_7_Tests
         [TestMethod]
         public void BoothRepository_AddPartyToList_ShouldReturnCorrectCount()
         {
-            var list =_boothRepo.GetParties();
+            var list = _boothRepo.GetParties();
             _boothRepo.AddPartyToList(new Party());
 
             var actual = list.Count;
@@ -100,6 +100,51 @@ namespace Challenge_7_Tests
             Assert.AreEqual(expected, actual);
         }
 
+        //Helper Methods
+        [DataTestMethod]
+        [DataRow("Mrs. Curl", "")]
+        [DataRow("Bob's Burgers", "")]
+        [DataRow("", "Holiday Party")]
+        public void BoothRepository_SeedData_ShouldSeedCorrectData(string boothName, string partyName)
+        {
+            _boothRepo.SeedData();
 
+            var actual = false;
+
+            foreach (var booth in _boothRepo.GetAllBooths())
+            {
+                if (booth.BoothName == boothName)
+                    actual = true;
+            }
+
+            if (!actual)
+            {
+                foreach (var party in _boothRepo.GetParties())
+                {
+                    if (party.PartyName == partyName)
+                        actual = true;
+                    else if (party.DessertBooth.BoothName == boothName || party.BurgerBooth.BoothName == boothName)
+                        actual = true;
+                }
+            }
+
+            Assert.IsTrue(actual);
+        }
+
+        [DataTestMethod]
+        [DataRow(0,34)]
+        [DataRow(1,12)]
+        public void BoothRepository_GetBoothTickets_ShouldSetBoothTicketValues(int index, int tickets)
+        {
+            _boothRepo.SeedData();
+            var list = _boothRepo.GetAllBooths();
+
+            _boothRepo.GetBoothTickets();
+
+            var actual = list[index].TicketsTaken;
+            var expected = tickets;
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
