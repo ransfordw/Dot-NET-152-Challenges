@@ -138,6 +138,7 @@ namespace Challenge_7
                 i++;
             }
         }
+
         private void PrintBooths(List<DessertBooth> booths)
         {
             int i = 1;

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Challenge_3
+﻿namespace Challenge_3
 {
     public enum EventType { Golf = 1, Bowling, AmusmentPark, Concert, Other }
 

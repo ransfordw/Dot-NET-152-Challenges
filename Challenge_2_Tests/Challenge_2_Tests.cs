@@ -1,5 +1,4 @@
-﻿using System;
-using Challenge_2;
+﻿using Challenge_2;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Challenge_2_Tests

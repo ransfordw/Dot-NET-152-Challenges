@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Challenge_5
 {
@@ -43,7 +40,7 @@ namespace Challenge_5
 
         public void RemoveCustomerFromList(string name)
         {
-           var remove =  _customers.Single(c => c.Name == name);
+            var remove = _customers.Single(c => c.Name == name);
             _customers.Remove(remove);
         }
 

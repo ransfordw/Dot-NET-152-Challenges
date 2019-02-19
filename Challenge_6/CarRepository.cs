@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Challenge_6
 {
@@ -10,7 +6,7 @@ namespace Challenge_6
     {
         private List<Car> _cars = new List<Car>();
         private CarType _type;
-        
+
         public List<Car> GetCarList()
         {
             return _cars;

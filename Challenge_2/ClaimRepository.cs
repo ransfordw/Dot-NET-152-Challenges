@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Challenge_2
 {
@@ -36,9 +33,7 @@ namespace Challenge_2
 
             bool IsValid;
             if (TimeSinceIncident.Days <= 30)
-            {
                 _isValid = true;
-            }
             else _isValid = false;
 
             IsValid = _isValid;

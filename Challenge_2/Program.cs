@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Challenge_2
+﻿namespace Challenge_2
 {
     class Program
     {
@@ -12,8 +6,6 @@ namespace Challenge_2
         {
             ProgramUI program = new ProgramUI();
             program.Run();
-
-            
         }
     }
 }
