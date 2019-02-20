@@ -14,7 +14,6 @@ namespace Challenge_7_Tests
         public void BoothFactory_GetBooth_ShouldReturnTypeOfIBooth(int response, string name, double cost, double misc, Type expected)
         {
             var actual = _factory.GetBooth(response, name, (decimal)cost, (decimal)misc);
-            //var expected = typeof(BurgerBooth);
 
             Assert.IsInstanceOfType(actual, expected);
         }
