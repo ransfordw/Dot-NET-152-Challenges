@@ -39,8 +39,6 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,6 +58,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Claim.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Challenge_UtilityMethods\Challenge_UtilityMethods.csproj">
+      <Project>{7efcb53d-c069-4ada-9670-9a584700697a}</Project>
+      <Name>Challenge_UtilityMethods</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
