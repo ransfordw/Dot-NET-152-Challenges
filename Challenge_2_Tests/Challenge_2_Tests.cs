@@ -53,5 +53,31 @@ namespace Challenge_2_Tests
 
             Assert.AreEqual(expected, actual);
         }
+
+        [DataTestMethod]
+        [DataRow("2/2/2019", "2/2/2018", false)]
+        [DataRow("2/12/2019", "2/2/2019", true)]
+        public void Claim_ValidateClaim_ReturnsCorrectBoolean(string claimDate, string incidentDate, bool expected)
+        {
+            Claim claim = new Claim(1, TypeOfClaim.Car, "description", 123m, claimDate, incidentDate);
+
+            var actual = claim.IsValid;
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [DataTestMethod]
+        [DataRow("2/2/2019", "2/2/2018", 365)]
+        [DataRow("2/12/2019", "2/2/2019", 10)]
+        [DataRow("3/15/2019", "1/2/2019", 72)]
+        public void Claim_SetTimeSpan_ReturnsValue(string claimDate, string incidentDate, int expected)
+        {
+            Claim claim = new Claim(1, TypeOfClaim.Car, "description", 123m, claimDate, incidentDate);
+
+            var actual = claim.TimeSinceIncident.Days;
+
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }
