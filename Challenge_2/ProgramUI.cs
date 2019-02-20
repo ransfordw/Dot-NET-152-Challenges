@@ -129,7 +129,6 @@ namespace Challenge_2
                     Console.WriteLine("Please enter a date less than 31.");
                 else if (!GetMaxDaysBool(month) && day >= 30)
                     Console.WriteLine("Please enter a date less than 30.");
-
             }
 
             Console.Write("Year: ");
