@@ -17,7 +17,7 @@ namespace Challenge_2_Tests
         [TestMethod]
         public void ClaimsRepository_AddItemToQueue_ShouldIncreaseCountByOne()
         {
-            Claim bob = new Claim(1, TypeOfClaim.Car, "Accident on 65", 500.0m, "7/29/2018", "5/22/2018", false);
+            Claim bob = new Claim(1, TypeOfClaim.Car, "Accident on 65", 500.0m, "7/29/2018", "5/22/2018");
             _claimRepoTest.AddClaimToQueue(bob);
 
             //GetClaims method is tested within this method as well.
@@ -30,8 +30,8 @@ namespace Challenge_2_Tests
         [TestMethod]
         public void ClaimsRepository_RemoveQueueItem_ShouldDecreaseCountByOne()
         {
-            Claim bob = new Claim(1, TypeOfClaim.Car, "Accident on 65", 500.0m, "7/29/2018", "5/22/2018", false);
-            Claim sue = new Claim(2, TypeOfClaim.Car, "Flat tire", 125.0m, "7/25/2018", "6/30/2018", true);
+            Claim bob = new Claim(1, TypeOfClaim.Car, "Accident on 65", 500.0m, "7/29/2018", "5/22/2018");
+            Claim sue = new Claim(2, TypeOfClaim.Car, "Flat tire", 125.0m, "7/25/2018", "6/30/2018");
             _claimRepoTest.AddClaimToQueue(bob);
             _claimRepoTest.AddClaimToQueue(sue);
 

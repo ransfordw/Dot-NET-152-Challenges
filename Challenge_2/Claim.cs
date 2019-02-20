@@ -2,23 +2,20 @@
 
 namespace Challenge_2
 {
-    public enum TypeOfClaim { Car = 1, Home = 2, Theft = 3, Other = 4 }
+    public enum TypeOfClaim { Car = 1, Home, Theft, Other }
 
     public class Claim
     {
-        //Constructors
-        public Claim() { }
-
         public Claim(int id, TypeOfClaim type, string description, decimal amount, string claimDate,
-            string incidentDate, bool _isValid)
+            string incidentDate)
         {
             ClaimID = id;
             Category = type;
             Description = description;
             ClaimAmount = amount;
-            IsValid = _isValid;
             ClaimDate = claimDate;
             IncidentDate = incidentDate;
+            IsValid = ValidateClaim(TimeSinceIncident);
         }
 
         //Properties
@@ -32,5 +29,12 @@ namespace Challenge_2
         public bool IsValid { get; set; }
 
         public override string ToString() => $"Claim ID: {ClaimID} \nClaim Type: {Category} \nDescription: {Description} \nClaim Amount: ${ClaimAmount} \nClaim Date: {ClaimDate}\nIncident Date: {IncidentDate}\nTime Since Incident: {TimeSinceIncident}\nIs the claim valid? {IsValid}";
+
+        private bool ValidateClaim(TimeSpan timeSince)
+        {
+            if (timeSince.Days <= 30)
+                return true;
+            else return false;
+        }
     }
 }

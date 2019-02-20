@@ -5,12 +5,10 @@ namespace Challenge_2
 {
     public class ClaimRepository
     {
-        //Fields
         private Queue<Claim> _claimsQueue = new Queue<Claim>();
         private bool _isValid;
         private TypeOfClaim _type;
 
-        //Methods
         public Queue<Claim> GetClaims()
         {
             return _claimsQueue;
@@ -31,13 +29,11 @@ namespace Challenge_2
         {
             TimeSpan TimeSinceIncident = Convert.ToDateTime(claimDate) - Convert.ToDateTime(incidentDate);
 
-            bool IsValid;
             if (TimeSinceIncident.Days <= 30)
                 _isValid = true;
             else _isValid = false;
 
-            IsValid = _isValid;
-            return IsValid;
+            return _isValid;
         }
 
         public TypeOfClaim ClaimTypeSwitch(int input)
