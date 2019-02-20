@@ -44,18 +44,6 @@ namespace Challenge_2_Tests
         }
 
         [TestMethod]
-        public void ClaimsRepository_ValidateClaim_ShouldReturnBoolean()
-        {
-            var claimDate = "7/29/2018";
-            var incidentDate = "5/22/2018";
-
-            var actual = _claimRepoTest.ValidateClaim(claimDate, incidentDate);
-            var expected = false;
-
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod]
         public void ClaimRepository_ClaimTypeSwitch_ShouldReturnCorrectType()
         {
             int i = 3;

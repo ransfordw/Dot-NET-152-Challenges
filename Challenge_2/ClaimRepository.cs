@@ -25,17 +25,6 @@ namespace Challenge_2
             return _claimsQueue;
         }
 
-        public bool ValidateClaim(string claimDate, string incidentDate)
-        {
-            TimeSpan TimeSinceIncident = Convert.ToDateTime(claimDate) - Convert.ToDateTime(incidentDate);
-
-            if (TimeSinceIncident.Days <= 30)
-                _isValid = true;
-            else _isValid = false;
-
-            return _isValid;
-        }
-
         public TypeOfClaim ClaimTypeSwitch(int input)
         {
             switch (input)
