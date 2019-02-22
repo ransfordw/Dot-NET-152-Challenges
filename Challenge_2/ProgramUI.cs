@@ -20,7 +20,7 @@ namespace Challenge_2
             {
 
                 PrintMenu();
-                switch (_response)
+                switch (_response) 
                 {
                     case 1:
                         _claimRepo.GetClaims();
