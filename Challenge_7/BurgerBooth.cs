@@ -4,16 +4,6 @@
     {
         private decimal _totalCostByTicket;
 
-        public BurgerBooth(string name, decimal cost, decimal misc)
-        {
-            BoothName = name;
-            EntreCost = cost;
-            MiscCost = misc;
-            TotalCostPerTicket = TotalCostPerTicket;
-        }
-
-        public BurgerBooth() { }
-
         public decimal EntreCost { get; set; }
         public string BoothName { get; set; }
         public int TicketsTaken { get; set; }
@@ -24,5 +14,16 @@
             get => _totalCostByTicket;
             set { _totalCostByTicket = MiscCost + EntreCost; }
         }
+
+        public BurgerBooth(string name, decimal cost, decimal misc)
+        {
+            BoothName = name;
+            EntreCost = cost;
+            MiscCost = misc;
+            TotalCostPerTicket = TotalCostPerTicket;
+        }
+
+        public BurgerBooth() { }
+
     }
 }
