@@ -97,6 +97,9 @@ namespace Challenge_7
                         isRunning = false;
                         break;
                 }
+                Console.Write("Press any key to continue...");
+                Console.ReadKey();
+                Console.Clear();
             }
         }
 
