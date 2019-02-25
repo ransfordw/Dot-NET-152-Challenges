@@ -20,7 +20,7 @@ namespace Challenge_2
             {
 
                 PrintMenu();
-                switch (_response)
+                switch (_response) 
                 {
                     case 1:
                         _claimRepo.GetClaims();
@@ -129,7 +129,6 @@ namespace Challenge_2
                     Console.WriteLine("Please enter a date less than 31.");
                 else if (!GetMaxDaysBool(month) && day >= 30)
                     Console.WriteLine("Please enter a date less than 30.");
-
             }
 
             Console.Write("Year: ");
