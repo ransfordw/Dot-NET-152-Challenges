@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Challenge_8
 {
-    public class Driver
+    public class Driver : IInsuranceMetrics
     {
         private string _fullName;
 
@@ -15,7 +15,7 @@ namespace Challenge_8
         public int RollingStops { get; set; }
         public int TimesTailgating { get; set; }
         public decimal PremiumModifier { get; set; }
-
+        
         public string FullName
         {
             get => _fullName;
