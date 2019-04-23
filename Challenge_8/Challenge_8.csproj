@@ -46,6 +46,7 @@
     <Compile Include="Car.cs" />
     <Compile Include="Driver.cs" />
     <Compile Include="DriverRepository.cs" />
+    <Compile Include="IInsuranceMetrics.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProgramUI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

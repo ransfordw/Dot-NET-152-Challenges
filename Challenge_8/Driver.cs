@@ -5,9 +5,6 @@ namespace Challenge_8
 {
     public class Driver : IInsuranceMetrics
     {
-        private string _fullName;
-        private decimal premiumModifier;
-
         public int Age { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -19,14 +16,13 @@ namespace Challenge_8
 
         public decimal PremiumModifier
         {
-            get => premiumModifier;
-            set { premiumModifier = CalculatePremiumModifier(); }
+            get => CalculatePremiumModifier();
+          //  set { premiumModifier = CalculatePremiumModifier(); }
         }
 
         public string FullName
         {
-            get => _fullName;
-            set { _fullName = LastName + ", " + FirstName; }
+            get => LastName + ", " + FirstName;
         }
 
         public Driver()
@@ -51,41 +47,55 @@ namespace Challenge_8
 
         private decimal CalculatePremiumModifier()
         {
-            decimal modifier = 0;
+            var speeding = CheckSpeeding();
 
-            //Speeding Check
-            if (TimeSpeeding > new TimeSpan(0, 20, 0))
-                modifier += 0.2m;
-            else if (TimeSpeeding > new TimeSpan(1, 0, 0))
-                modifier += 0.5m;
+            var lanes = CheckTimesOutOfLane();
+
+            var rolling = CheckRollingStops();
+
+            var tailgating = CheckTailgating();
+
+            return speeding + lanes + rolling + tailgating;
+        }
+
+        public decimal CheckSpeeding()
+        {
+            if (TimeSpeeding >= new TimeSpan(1, 0, 0))
+                return 0.5m;
+            else if (TimeSpeeding >= new TimeSpan(0, 20, 0))
+                return 0.2m;
             else
-                modifier -= 0.4m;
+                return -0.4m;
+        }
 
-            //Out of Lane Check
-            if (TimesOutOfLane > 2)
-                modifier += 0.1m;
-            else if (TimesOutOfLane > 5)
-                modifier += 0.3m;
+        public decimal CheckTimesOutOfLane()
+        {
+            if (TimesOutOfLane > 5)
+                return 0.3m;
+            else if (TimesOutOfLane > 2)
+                return 0.1m;
             else
-                modifier -= 0.4m;
+                return -0.4m;
+        }
 
-            //Rolling Stop Check
-            if (RollingStops > 10)
-                modifier += 0.2m;
-            else if (RollingStops > 20)
-                modifier += 0.4m;
+        public decimal CheckRollingStops()
+        {
+            if (RollingStops > 20)
+                return 0.4m;
+            else if (RollingStops > 10)
+                return 0.2m;
             else
-                modifier -= 0.2m;
+                return -0.2m;
+        }
 
-            //Tailgating Check
-            if (TimesTailgating > 3)
-                modifier += 0.2m;
-            else if (TimesTailgating > 4)
-                modifier += 0.5m;
+        public decimal CheckTailgating()
+        {
+            if (TimesTailgating > 4)
+                return 0.5m;
+            else if (TimesTailgating > 3)
+                return 0.2m;
             else
-                modifier -= 0.6m;
-
-            return modifier;
+                return -0.6m;
         }
     }
 }
