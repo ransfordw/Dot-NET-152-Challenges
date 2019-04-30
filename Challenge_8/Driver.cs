@@ -37,7 +37,7 @@ namespace Challenge_8
             Age = age;
         }
 
-        public Driver(TimeSpan speeding, int outOfLane, int rollingStops, int tailgating) :this ()
+        public Driver(TimeSpan speeding, int outOfLane, int rollingStops, int tailgating, string firstName,string lastName, int age) :this (firstName, lastName, age)
         {
             TimeSpeeding = speeding;
             TimesOutOfLane = outOfLane;
