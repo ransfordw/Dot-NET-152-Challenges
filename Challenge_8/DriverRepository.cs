@@ -1,13 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Challenge_8
 {
     internal class DriverRepository
     {
-        private readonly Driver _driver;
-        public void AddCarToDriver(Car car)
+        private List<Driver> _drivers;
+
+        public List<Driver> GetDrivers()
         {
-            _driver.Cars.Add(car);
+            _drivers = new List<Driver>();
+            return _drivers;
+        }
+        public void AddCarToDriver(Car car, Driver driver)
+        {
+            foreach (var driverInList in _drivers)
+            {
+                if (driverInList.FullName == driver.FullName)
+                    driverInList.Cars.Add(car);
+            }
         }
     }
 }

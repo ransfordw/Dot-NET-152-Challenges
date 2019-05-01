@@ -18,9 +18,9 @@ namespace Challenge_8
             _driverList.Add(driver);
         }
 
-        public void AddCarToDriver(Car car)
+        public void AddCarToDriver(Car car, Driver driver)
         {
-            _driverRepo.AddCarToDriver(car);
+            _driverRepo.AddCarToDriver(car, driver);
         }
     }
 }
