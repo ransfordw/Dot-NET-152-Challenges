@@ -34,7 +34,7 @@ namespace Challenge_8_Tests
         public void Driver_CheckSpeeding_ShouldReturnCorrectValue(int hours, int minutes, int outOfLane, int rollingStops, int tailgaiting, double expected)
         {
             var speeding = new TimeSpan(hours, minutes, 0);
-            var driver = new Driver(speeding, outOfLane, rollingStops, tailgaiting);
+            var driver = new Driver(speeding, outOfLane, rollingStops, tailgaiting,"bob","marley",45);
 
             var actual = driver.CheckSpeeding();
             Assert.AreEqual((decimal)expected, actual);
@@ -47,7 +47,7 @@ namespace Challenge_8_Tests
         public void Driver_CheckTimesOutOfLane_ShouldReturnCorrectValue(int hours, int minutes, int outOfLane, int rollingStops, int tailgaiting, double expected)
         {
             var speeding = new TimeSpan(hours, minutes, 0);
-            var driver = new Driver(speeding, outOfLane, rollingStops, tailgaiting);
+            var driver = new Driver(speeding, outOfLane, rollingStops, tailgaiting, "bob", "marley", 45);
 
             var actual = driver.CheckTimesOutOfLane();
             Assert.AreEqual((decimal)expected, actual);
@@ -60,7 +60,7 @@ namespace Challenge_8_Tests
         public void Driver_CheckRollingStops_ShouldReturnCorrectValue(int hours, int minutes, int outOfLane, int rollingStops, int tailgaiting, double expected)
         {
             var speeding = new TimeSpan(hours, minutes, 0);
-            var driver = new Driver(speeding, outOfLane, rollingStops, tailgaiting);
+            var driver = new Driver(speeding, outOfLane, rollingStops, tailgaiting, "bob", "marley", 45);
 
             var actual = driver.CheckRollingStops();
             Assert.AreEqual((decimal)expected, actual);
@@ -73,7 +73,7 @@ namespace Challenge_8_Tests
         public void Driver_CheckTailgating_ShouldReturnCorrectValue(int hours, int minutes, int outOfLane, int rollingStops, int tailgaiting, double expected)
         {
             var speeding = new TimeSpan(hours, minutes, 0);
-            var driver = new Driver(speeding, outOfLane, rollingStops, tailgaiting);
+            var driver = new Driver(speeding, outOfLane, rollingStops, tailgaiting, "bob", "marley", 45);
 
             var actual = driver.CheckTailgating();
             Assert.AreEqual((decimal)expected, actual);
@@ -85,7 +85,7 @@ namespace Challenge_8_Tests
         public void Driver_CalculatePremiumModifierGetter_ShouldReturnCorrectDecimal(int hours, int minutes, int outOfLane, int rollingStops, int tailgaiting, double expected)
         {
             var speeding = new TimeSpan(hours, minutes, 0);
-            var driver = new Driver(speeding, outOfLane, rollingStops, tailgaiting);
+            var driver = new Driver(speeding, outOfLane, rollingStops, tailgaiting, "bob", "marley", 45);
 
             var actual = driver.PremiumModifier;
 
