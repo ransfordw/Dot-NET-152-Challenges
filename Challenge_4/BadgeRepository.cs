@@ -5,8 +5,8 @@ namespace Challenge_4
 {
     public class BadgeRepository
     {
-        private List<string> _doorAccessList = new List<string>();
-        private Dictionary<int, List<string>> _badgeID = new Dictionary<int, List<string>>();
+        private readonly List<string> _doorAccessList = new List<string>();
+        private readonly Dictionary<int, List<string>> _badgeID = new Dictionary<int, List<string>>();
 
         public List<string> GetList()
         {
