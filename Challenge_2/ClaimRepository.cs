@@ -5,8 +5,7 @@ namespace Challenge_2
 {
     public class ClaimRepository
     {
-        private Queue<Claim> _claimsQueue = new Queue<Claim>();
-        private bool _isValid;
+        private readonly Queue<Claim> _claimsQueue = new Queue<Claim>();
         private TypeOfClaim _type;
 
         public Queue<Claim> GetClaims()
