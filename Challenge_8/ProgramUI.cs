@@ -10,6 +10,7 @@ namespace Challenge_8
             SeedData();
         }
 
+
         private void SeedData()
         {
             var ford = new Car(CarMake.Ford, CarType.SUV, 1993, 185000, false, true, new TimeSpan(0, 30, 0), 4, 7, 1);

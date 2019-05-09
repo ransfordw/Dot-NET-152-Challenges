@@ -5,11 +5,10 @@ namespace Challenge_8
 {
     internal class DriverRepository
     {
-        private List<Driver> _drivers;
+        private List<Driver> _drivers = new List<Driver>();
 
         public List<Driver> GetDrivers()
         {
-            _drivers = new List<Driver>();
             return _drivers;
         }
         public void AddCarToDriver(Car car, Driver driver)
