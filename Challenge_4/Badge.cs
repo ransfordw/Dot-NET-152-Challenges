@@ -11,6 +11,7 @@ namespace Challenge_4
             DoorList = doorList;
         }
 
+        public List<Door> Doors { get; set; }
         public int BadgeNum { get; set; }
         public List<string> DoorList { get; set; }
     }
