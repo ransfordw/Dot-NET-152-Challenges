@@ -10,8 +10,6 @@ namespace Challenge_4
             Badge badge = new Badge();
             BadgeRepository badgeRepo = new BadgeRepository();
             Dictionary<int, List<string>> badges = badgeRepo.GetDictionary();
-            List<string> listOne = new List<string>() { "A1", "A2" };
-            Badge one = new Badge(123, listOne);
             string response = null;
 
             while (response != "4")
@@ -23,7 +21,7 @@ namespace Challenge_4
                 {
                     case "1":
                         Console.WriteLine("Enter badge ID number:");
-                        badge.BadgeNum = Int32.Parse(Console.ReadLine());
+                        badge.BadgeNum = int.Parse(Console.ReadLine());
 
                         List<string> _newDoorsFromConsole = new List<string>();
                         bool doorAddLoop = true;
@@ -91,5 +89,6 @@ namespace Challenge_4
                 }
             }
         }
+
     }
 }
