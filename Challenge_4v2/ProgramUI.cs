@@ -26,8 +26,6 @@ namespace Challenge_4v2
             Console.ReadLine();
         }
 
-       
-
         private void ParseUserResponse(string userResponse)
         {
             int.TryParse(userResponse, out int menuResult);
@@ -52,9 +50,7 @@ namespace Challenge_4v2
         {
             Console.WriteLine($"Badge No.\t\tDoors");
             foreach(var badge in _badges)
-            {
                 Console.WriteLine($"{badge.Key}\t\t\t{ConvertDoorListToString(badge.Value)}");
-            }
         }
 
         private string ConvertDoorListToString(List<Door> value)
@@ -62,9 +58,7 @@ namespace Challenge_4v2
             string doorNames = "";
 
             foreach(var door in value)
-            {
                 doorNames += $"{door.DoorName}, ";
-            }
             return doorNames.TrimEnd(new char[]{',',' '});
         }
 
@@ -84,7 +78,7 @@ namespace Challenge_4v2
                         PrintAllDoors();
                         Console.Write("Enter the number of the door you wish to add to the new badge:");
                         var desiredDoorIndex = int.Parse(Console.ReadLine()) - 1;
-                        _tempDoors.Add(_tempDoors[desiredDoorIndex]);
+                        _tempDoors.Add(_allDoors[desiredDoorIndex]);
                         break;
                     case 2:
                         _tempDoors.Add(CreateNewDoor());
@@ -93,6 +87,7 @@ namespace Challenge_4v2
                 Console.WriteLine("Would you like to add more doors to the badge? y/n");
                 addMoreDoors = GetBooleanResponse();
             } while (addMoreDoors);
+
             var newBadge = new Badge(_badges.Count + 1, _tempDoors);
             _badgeRepo.AddBadgeToDictionary(newBadge);
         }
