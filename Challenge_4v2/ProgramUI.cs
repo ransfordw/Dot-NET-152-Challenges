@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace Challenge_4v2
 {
@@ -20,6 +21,7 @@ namespace Challenge_4v2
 
             while (isRunning)
             {
+                Console.Clear();
                 PrintMainMenu();
                 ParseUserResponse(Console.ReadLine());
             }
@@ -28,22 +30,49 @@ namespace Challenge_4v2
 
         private void ParseUserResponse(string userResponse)
         {
-            int.TryParse(userResponse, out int menuResult);
-            switch (menuResult)
+            switch (userResponse)
             {
-                case 1:
+                case "1":
                     AddNewBadge();
                     break;
-                case 2:
+                case "2":
                     //PrintEditBadgeMenu();
                     break;
-                case 3:
+                case "3":
                     PrintBadges();
                     break;
-
+                case "4":
+                    PrintBadges();
+                    break;
+                case "5":
+                    PrintBadges();
+                    break;
+                case "6":
+                    PrintBadges();
+                    break;
+                case "7":
+                    PrintBadges();
+                    break;
                 default:
+                    PrintSassyMessage(userResponse);
                     break;
             }
+
+        }
+
+        private void PrintSassyMessage(string userInput)
+        {
+            Thread.Sleep(1275);
+            Console.Write("What ");
+            Thread.Sleep(1225);
+            Console.Write("were ");
+            Thread.Sleep(1225);
+            Console.Write("you ");
+            Thread.Sleep(1225);
+            Console.WriteLine("thinking?!?");
+            Thread.Sleep(1225);
+            Console.WriteLine($"\"{userInput}\" is not a valid choice. Try again...");
+            Thread.Sleep(2425);
         }
 
         private void PrintBadges()
