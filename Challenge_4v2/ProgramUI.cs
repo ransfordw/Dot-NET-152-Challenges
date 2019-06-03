@@ -13,6 +13,8 @@ namespace Challenge_4v2
         {
             _badges = _badgeRepo.GetAllBadges();
             _allDoors = _badgeRepo.GetAllDoors();
+            SeedDoors();
+            SeedBadges();
 
             var isRunning = true;
 
@@ -21,7 +23,10 @@ namespace Challenge_4v2
                 PrintMainMenu();
                 ParseUserResponse(Console.ReadLine());
             }
+            Console.ReadLine();
         }
+
+       
 
         private void ParseUserResponse(string userResponse)
         {
@@ -35,12 +40,32 @@ namespace Challenge_4v2
                     //PrintEditBadgeMenu();
                     break;
                 case 3:
-                    // PrintBadges();
+                    PrintBadges();
                     break;
 
                 default:
                     break;
             }
+        }
+
+        private void PrintBadges()
+        {
+            Console.WriteLine($"Badge No.\t\tDoors");
+            foreach(var badge in _badges)
+            {
+                Console.WriteLine($"{badge.Key}\t\t\t{ConvertDoorListToString(badge.Value)}");
+            }
+        }
+
+        private string ConvertDoorListToString(List<Door> value)
+        {
+            string doorNames = "";
+
+            foreach(var door in value)
+            {
+                doorNames += $"{door.DoorName}, ";
+            }
+            return doorNames.TrimEnd(new char[]{',',' '});
         }
 
         private void AddNewBadge()
@@ -114,6 +139,22 @@ namespace Challenge_4v2
                 $"\n5. Edit a Door" +
                 $"\n6. Remove a Door" +
                 $"\n7. Exit program");
+        }
+
+        private void SeedBadges()
+        {
+            _badgeRepo.AddBadgeToDictionary(new Badge(_badges.Count + 1, new List<Door>() { _allDoors[0], _allDoors[2] }));
+            _badgeRepo.AddBadgeToDictionary(new Badge(_badges.Count + 1, new List<Door>() { _allDoors[2], _allDoors[3] }));
+            _badgeRepo.AddBadgeToDictionary(new Badge(_badges.Count + 1, new List<Door>() { _allDoors[4] }));
+        }
+
+        private void SeedDoors()
+        {
+            _badgeRepo.AddNewDoorToAllDoors(new Door(_allDoors.Count + 1, "A1"));
+            _badgeRepo.AddNewDoorToAllDoors(new Door(_allDoors.Count + 1, "A2"));
+            _badgeRepo.AddNewDoorToAllDoors(new Door(_allDoors.Count + 1, "A3"));
+            _badgeRepo.AddNewDoorToAllDoors(new Door(_allDoors.Count + 1, "B1"));
+            _badgeRepo.AddNewDoorToAllDoors(new Door(_allDoors.Count + 1, "C1"));
         }
     }
 }
