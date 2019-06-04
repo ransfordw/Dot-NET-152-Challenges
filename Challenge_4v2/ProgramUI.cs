@@ -10,6 +10,7 @@ namespace Challenge_4v2
         List<Door> _allDoors;
         List<Door> _tempDoors;
         Dictionary<int, List<Door>> _badges;
+        bool isRunning;
         internal void Run()
         {
             _badges = _badgeRepo.GetAllBadges();
@@ -17,7 +18,7 @@ namespace Challenge_4v2
             SeedDoors();
             SeedBadges();
 
-            var isRunning = true;
+            isRunning = true;
 
             while (isRunning)
             {
@@ -30,6 +31,14 @@ namespace Challenge_4v2
 
         private void ParseUserResponse(string userResponse)
         {
+            Console.WriteLine($"What would you like to do?" +
+              $"\n\n1. Add a badge" +
+              $"\n2. Edit a badge" +
+              $"\n3. List all badges" +
+              $"\n4. Add a Door" +
+              $"\n5. Edit a Door" +
+              $"\n6. Remove a Door" +
+              $"\n7. Exit program");
             switch (userResponse)
             {
                 case "1":
@@ -42,22 +51,21 @@ namespace Challenge_4v2
                     PrintBadges();
                     break;
                 case "4":
-                    PrintBadges();
+                    //AddNewDoor();
                     break;
                 case "5":
-                    PrintBadges();
+                    //EditExistingDoor();
                     break;
                 case "6":
-                    PrintBadges();
+                    //RemoveExistingDoor();
                     break;
                 case "7":
-                    PrintBadges();
+                    isRunning = false;
                     break;
                 default:
                     PrintSassyMessage(userResponse);
                     break;
             }
-
         }
 
         private void PrintSassyMessage(string userInput)
