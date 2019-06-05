@@ -31,14 +31,6 @@ namespace Challenge_4v2
 
         private void ParseUserResponse(string userResponse)
         {
-            Console.WriteLine($"What would you like to do?" +
-              $"\n\n1. Add a badge" +
-              $"\n2. Edit a badge" +
-              $"\n3. List all badges" +
-              $"\n4. Add a Door" +
-              $"\n5. Edit a Door" +
-              $"\n6. Remove a Door" +
-              $"\n7. Exit program");
             switch (userResponse)
             {
                 case "1":
@@ -51,13 +43,13 @@ namespace Challenge_4v2
                     PrintBadges();
                     break;
                 case "4":
-                    //AddNewDoor();
+                    CreateNewDoor();
                     break;
                 case "5":
                     //EditExistingDoor();
                     break;
                 case "6":
-                    //RemoveExistingDoor();
+                    RemoveExistingDoor();
                     break;
                 case "7":
                     isRunning = false;
@@ -66,6 +58,17 @@ namespace Challenge_4v2
                     PrintSassyMessage(userResponse);
                     break;
             }
+            Console.Write("Press any key to continue...");
+            Console.ReadKey();
+        }
+
+        private void RemoveExistingDoor()
+        {
+            PrintAllDoors();
+            Console.Write("Enter the number of the door you wish to remove: ");
+            int removeDoorNumber = int.Parse(Console.ReadLine());
+            var doorToRemove = _allDoors.Find(door => door.DoorID == removeDoorNumber);
+            _badgeRepo.RemoveDoor(doorToRemove);
         }
 
         private void PrintSassyMessage(string userInput)
@@ -143,8 +146,11 @@ namespace Challenge_4v2
 
             if (!_allDoors.Exists(door => door.DoorName == doorName))
             {
-                newDoor = new Door(_allDoors.Count + 1, doorName);
-                _allDoors.Add(newDoor);
+                newDoor = new Door()
+                {
+                    DoorName = doorName
+                };
+                _badgeRepo.AddNewDoorToAllDoors(newDoor);
                 return newDoor;
             }
             else
@@ -153,11 +159,11 @@ namespace Challenge_4v2
 
         private void PrintAllDoors()
         {
-            var i = 1;
+            //var i = 1;
             foreach (var door in _allDoors)
             {
-                Console.WriteLine($"{i}. {door}");
-                i++;
+                Console.WriteLine($"{door.DoorID}. {door}");
+                //i++;
             }
         }
 
