@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace Challenge_1
 {
     class ProgramUI
     {
-        MenuRepository _menuRepo = new MenuRepository();
+        readonly MenuRepository _menuRepo = new MenuRepository();
         List<MenuItem> _menuItems;
         int _response;
 
         public void Run()
         {
-            _menuItems = _menuRepo.ProduceMenu();
-            SeedData();
+            _menuItems = _menuRepo.GetMenuItemList();
 
             while (_response != 4)
             {
@@ -78,15 +78,22 @@ namespace Challenge_1
 
         private void PrintMenu()
         {
-            Console.WriteLine($"Menu Options\n 1. Add Menu Item\n 2. Remove Menu Item\n 3. Print Menu\n 4. Finish");
-            _response = int.Parse(Console.ReadLine());
-        }
-
-        private void SeedData()
-        {
-            _menuRepo.AddItemToMenu(new MenuItem("Arroz con Pollo", "Mexican rice with grilled chicken and white cheese.", "Rice, Chicken, Cheese, Spices.", 12.0m));
-            _menuRepo.AddItemToMenu(new MenuItem("Mac N' Cheese", "Kraft macaroni and cheese", "Macaroni pasta, milk, butter, powdered cheese mix.", 1.50m));
-            _menuRepo.AddItemToMenu(new MenuItem("Flame-grilled Hamburger", "Delicious burger grilled over open flame, lightly seasoned.", "Ground beef, brioche bun, salt, pepper, rosemary, butter.", 14.0m));
+            var isValidResponse = false;
+            while (!isValidResponse)
+            {
+                try
+                {
+                    Console.WriteLine($"Menu Options\n 1. Add Menu Item\n 2. Remove Menu Item\n 3. Print Menu\n 4. Finish");
+                    isValidResponse = int.TryParse(Console.ReadLine(), out _response);
+                    if (!isValidResponse) throw new InvalidCastException("The input was not a number");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"ERROR: {ex.Message}. Please try again...");
+                    Thread.Sleep(1500);
+                    Console.Clear();
+                }
+            }
         }
     }
 }

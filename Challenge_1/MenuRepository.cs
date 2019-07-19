@@ -5,15 +5,21 @@ namespace Challenge_1
 {
     public class MenuRepository
     {
-        private List<MenuItem> _menuItems = new List<MenuItem>();
+        private readonly List<MenuItem> _menuItems = new List<MenuItem>
+        {
+            new MenuItem("Arroz con Pollo", "Mexican rice with grilled chicken and white cheese.", "Rice, Chicken, Cheese, Spices.", 12.0m),
+            new MenuItem("Mac N' Cheese", "Kraft macaroni and cheese", "Macaroni pasta, milk, butter, powdered cheese mix.", 1.50m),
+            new MenuItem("Flame-grilled Hamburger", "Delicious burger grilled over open flame, lightly seasoned.", "Ground beef, brioche bun, salt, pepper, rosemary, butter.", 14.0m)
 
+        };
+       
         //Methods
         public void AddItemToMenu(MenuItem newMenuItem)
         {
             _menuItems.Add(newMenuItem);
         }
 
-        public List<MenuItem> ProduceMenu()
+        public List<MenuItem> GetMenuItemList()
         {
             return _menuItems;
         }
@@ -25,14 +31,13 @@ namespace Challenge_1
 
         public string IngredientsToString(List<string> ingredients)
         {
-            StringBuilder builder = new StringBuilder();
-            foreach (string ingredient in ingredients)
-            {
+            var builder = new StringBuilder();
+
+            foreach (var ingredient in ingredients)
                 builder.Append(ingredient).Append(", ");
-            }
+
             builder.Length -= 2;
-            string result = builder.ToString();
-            return result;
+            return builder.ToString();
         }
     }
 }
