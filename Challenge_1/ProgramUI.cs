@@ -21,29 +21,35 @@ namespace Challenge_1
                 {
                     case 1:
                         Console.WriteLine("Meal name: ");
-                        string mealName = Console.ReadLine();
+                        var mealName = Console.ReadLine();
 
                         Console.WriteLine("\nMeal description: ");
                         var description = Console.ReadLine();
 
                         Console.WriteLine("\nMeal price: ");
-                        decimal price = decimal.Parse(Console.ReadLine());
+                        var price = decimal.Parse(Console.ReadLine());
 
-                        bool ingredientsLoop = true;
+                        var isAddingIngredients = true;
 
-                        List<string> ingredientsFromConsole = new List<string>();
+                        var ingredientsFromConsole = new List<string>();
 
-                        while (ingredientsLoop)
+                        while (isAddingIngredients)
                         {
                             Console.WriteLine("Name an ingredient: ");
                             var ingredient = Console.ReadLine();
                             ingredientsFromConsole.Add(ingredient);
 
-                            Console.WriteLine("Would you like to add another ingredient? y/n");
-                            var addIngredientResponse = Console.ReadLine().ToLower();
+                            try
+                            {
+                                Console.WriteLine("Would you like to add another ingredient? y/n");
+                                var addIngredientResponse = Console.ReadLine().ToLower();
 
-                            if (addIngredientResponse.Contains("n"))
-                                ingredientsLoop = false;
+                                if (!addIngredientResponse.Contains("n") && !addIngredientResponse.Contains("y"))
+                                    throw new ArgumentException("Please enter \"n\" or \"y\".");
+                                if (addIngredientResponse == "n")
+                                    isAddingIngredients = false;
+                            }
+                            catch (Exception ex) { Console.WriteLine(ex.Message); }
                         }
                         string ingredients = _menuRepo.IngredientsToString(ingredientsFromConsole);
 

@@ -5,15 +5,14 @@ namespace Challenge_2
 {
     public class ProgramUI
     {
-        ClaimRepository _claimRepo = new ClaimRepository();
+        readonly ClaimRepository _claimsRepo = new ClaimRepository();
         Queue<Claim> _claimsQueue;
         int _response;
         int _id = 3;
 
         public void Run()
         {
-            _claimsQueue = _claimRepo.GetClaims();
-            SeedData();
+            _claimsQueue = _claimsRepo.GetClaims();
 
             Console.WriteLine("Main Menu");
             while (_response != 4)
@@ -23,7 +22,7 @@ namespace Challenge_2
                 switch (_response) 
                 {
                     case 1:
-                        _claimRepo.GetClaims();
+                        _claimsRepo.GetClaims();
 
                         Console.WriteLine($"Claim ID# \t Type of claim \t Amount \t Date of Incident \t Date of Claim \t Is Valid \t Description");
                         foreach (Claim c in _claimsQueue)
@@ -39,7 +38,7 @@ namespace Challenge_2
                         string handleClaim = Console.ReadLine().ToLower();
 
                         if (handleClaim == "y")
-                            _claimRepo.RemoveQueueItem();
+                            _claimsRepo.RemoveQueueItem();
 
                         break;
                     case 3:
@@ -60,7 +59,7 @@ namespace Challenge_2
             Console.WriteLine("Enter claim type: 1 = Car, 2 = Home, 3 = Theft, 4 = Other");
             var claimTypeInt = int.Parse(Console.ReadLine());
 
-            var claimType = _claimRepo.ClaimTypeSwitch(claimTypeInt);
+            var claimType = _claimsRepo.ClaimTypeSwitch(claimTypeInt);
 
             Console.WriteLine("Describe the claim: ");
             var description = Console.ReadLine();
@@ -85,7 +84,7 @@ namespace Challenge_2
 
             Claim claim = new Claim(id, claimType, description, amount, claimDate, incidentDate);
 
-            _claimRepo.AddClaimToQueue(claim);
+            _claimsRepo.AddClaimToQueue(claim);
         }
 
         private void PrintMenu()
@@ -97,11 +96,7 @@ namespace Challenge_2
             var success = int.TryParse(Console.ReadLine(), out _response);
         }
 
-        private void SeedData()
-        {
-            _claimRepo.AddClaimToQueue(new Claim(1, TypeOfClaim.Car, "Accident on 65", 500.0m, "7/29/2018", "5/22/2018"));
-            _claimRepo.AddClaimToQueue(new Claim(2, TypeOfClaim.Car, "Flat tire", 125.0m, "7/25/2018", "6/30/2018"));
-        }
+       
 
         public string GetDateAsString()
         {

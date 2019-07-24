@@ -22,7 +22,7 @@ namespace Challenge_2_Tests
 
             //GetClaims method is tested within this method as well.
             var actual = _claimRepoTest.GetClaims().Count;
-            var expected = 1;
+            var expected = 3;
 
             Assert.AreEqual(expected, actual);
         }
@@ -38,7 +38,7 @@ namespace Challenge_2_Tests
             _claimRepoTest.RemoveQueueItem();
 
             var actual = _claimRepoTest.GetClaims().Count;
-            var expected = 1;
+            var expected = 3;
 
             Assert.AreEqual(expected, actual);
         }
