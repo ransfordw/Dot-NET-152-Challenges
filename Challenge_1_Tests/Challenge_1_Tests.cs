@@ -21,7 +21,7 @@ namespace Challenge_1_Tests
             MenuItem meal = new MenuItem("Broccoli", "Steamed Broccoli", "Broccoli, butter, spices", 2.0m);
             menuRepoTest.AddItemToMenu(meal);
 
-            var actual = menuRepoTest.ProduceMenu().Count;
+            var actual = menuRepoTest.GetMenuItemList().Count;
             var expected = 1;
 
             Assert.AreEqual(expected, actual);
@@ -36,7 +36,7 @@ namespace Challenge_1_Tests
             menuRepoTest.AddItemToMenu(mealTwo);
 
             menuRepoTest.RemoveItemFromMenu(meal);
-            var actual = menuRepoTest.ProduceMenu().Count;
+            var actual = menuRepoTest.GetMenuItemList().Count;
             var expected = 1;
 
             Assert.AreEqual(expected, actual);
