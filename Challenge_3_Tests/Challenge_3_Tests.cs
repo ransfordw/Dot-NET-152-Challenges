@@ -27,7 +27,7 @@ namespace Challenge_3_Tests
             _outingRepoTest.AddToList(royalPin);
 
             var actual = _outingRepoTest.GetList().Count;
-            var expected = 1;
+            var expected = 5;
 
             Assert.AreEqual(expected, actual);
         }
@@ -58,7 +58,6 @@ namespace Challenge_3_Tests
         [TestMethod]
         public void OutingRepository_AddOutingToListByType_ShouldAddCorrectOuting()
         {
-            var outings = _outingRepoTest.GetList();
             _outingRepoTest.AddToList(royalPin);
             _outingRepoTest.AddToList(golf);
 
@@ -66,7 +65,7 @@ namespace Challenge_3_Tests
 
             _outingRepoTest.AddOutingToListByType(golf.Category);
             var actual = outingsByType.Count;
-            var expected = 1;
+            var expected = 3;
 
             Assert.AreEqual(expected, actual);
         }
