@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Challenge_2
 {
@@ -7,7 +6,7 @@ namespace Challenge_2
     {
         private readonly Queue<Claim> _claimsQueue;
         private TypeOfClaim _type;
-        private int _index;
+        private int _index = 1;
 
         public ClaimRepository()
         {
@@ -17,8 +16,8 @@ namespace Challenge_2
         }
         private void SeedData()
         {
-            AddClaimToQueue(new Claim(_index, TypeOfClaim.Car, "Accident on 65", 500.0m, "7/29/2018", "5/22/2018"));
-            AddClaimToQueue(new Claim(_index, TypeOfClaim.Car, "Flat tire", 125.0m, "7/25/2018", "6/30/2018"));
+            AddClaimToQueue(new Claim(TypeOfClaim.Car, "Accident on 65", 500.0m, "7/29/2018", "5/22/2018"));
+            AddClaimToQueue(new Claim(TypeOfClaim.Car, "Flat tire", 125.0m, "7/25/2018", "6/30/2018"));
         }
         public Queue<Claim> GetClaims()
         {

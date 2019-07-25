@@ -8,7 +8,6 @@ namespace Challenge_2
         readonly ClaimRepository _claimsRepo = new ClaimRepository();
         Queue<Claim> _claimsQueue;
         int _response;
-        int _id = 3;
 
         public void Run()
         {
@@ -53,9 +52,6 @@ namespace Challenge_2
 
         private void CreateANewClaim()
         {
-            var id = _id;
-            _id++;
-
             Console.WriteLine("Enter claim type: 1 = Car, 2 = Home, 3 = Theft, 4 = Other");
             var claimTypeInt = int.Parse(Console.ReadLine());
 
@@ -82,7 +78,7 @@ namespace Challenge_2
                 claimDate = GetDateAsString();
             }
 
-            Claim claim = new Claim(id, claimType, description, amount, claimDate, incidentDate);
+            Claim claim = new Claim(claimType, description, amount, claimDate, incidentDate);
 
             _claimsRepo.AddClaimToQueue(claim);
         }
