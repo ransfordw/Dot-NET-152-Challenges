@@ -22,7 +22,7 @@ namespace Challenge_1_Tests
             menuRepoTest.AddItemToMenu(meal);
 
             var actual = menuRepoTest.GetMenuItemList().Count;
-            var expected = 1;
+            var expected = 4;
 
             Assert.AreEqual(expected, actual);
         }
@@ -37,7 +37,7 @@ namespace Challenge_1_Tests
 
             menuRepoTest.RemoveItemFromMenu(meal);
             var actual = menuRepoTest.GetMenuItemList().Count;
-            var expected = 1;
+            var expected = 4;
 
             Assert.AreEqual(expected, actual);
         }

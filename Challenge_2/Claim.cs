@@ -6,16 +6,20 @@ namespace Challenge_2
 
     public class Claim
     {
-        public Claim(int id, TypeOfClaim type, string description, decimal amount, string claimDate,
+        public Claim(TypeOfClaim type, string description, decimal amount, string claimDate,
             string incidentDate)
         {
-            ClaimID = id;
             Category = type;
             Description = description;
             ClaimAmount = amount;
             ClaimDate = claimDate;
             IncidentDate = incidentDate;
             IsValid = ValidateClaim(TimeSinceIncident);
+        }
+        public Claim(int id, TypeOfClaim type, string description, decimal amount, string claimDate,
+            string incidentDate) :this(type,description,amount,claimDate,incidentDate)
+        {
+            ClaimID = id;
         }
 
         //Properties

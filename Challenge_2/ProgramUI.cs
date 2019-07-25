@@ -5,15 +5,13 @@ namespace Challenge_2
 {
     public class ProgramUI
     {
-        ClaimRepository _claimRepo = new ClaimRepository();
+        readonly ClaimRepository _claimsRepo = new ClaimRepository();
         Queue<Claim> _claimsQueue;
         int _response;
-        int _id = 3;
 
         public void Run()
         {
-            _claimsQueue = _claimRepo.GetClaims();
-            SeedData();
+            _claimsQueue = _claimsRepo.GetClaims();
 
             Console.WriteLine("Main Menu");
             while (_response != 4)
@@ -23,7 +21,7 @@ namespace Challenge_2
                 switch (_response) 
                 {
                     case 1:
-                        _claimRepo.GetClaims();
+                        _claimsRepo.GetClaims();
 
                         Console.WriteLine($"Claim ID# \t Type of claim \t Amount \t Date of Incident \t Date of Claim \t Is Valid \t Description");
                         foreach (Claim c in _claimsQueue)
@@ -39,7 +37,7 @@ namespace Challenge_2
                         string handleClaim = Console.ReadLine().ToLower();
 
                         if (handleClaim == "y")
-                            _claimRepo.RemoveQueueItem();
+                            _claimsRepo.RemoveQueueItem();
 
                         break;
                     case 3:
@@ -54,13 +52,10 @@ namespace Challenge_2
 
         private void CreateANewClaim()
         {
-            var id = _id;
-            _id++;
-
             Console.WriteLine("Enter claim type: 1 = Car, 2 = Home, 3 = Theft, 4 = Other");
             var claimTypeInt = int.Parse(Console.ReadLine());
 
-            var claimType = _claimRepo.ClaimTypeSwitch(claimTypeInt);
+            var claimType = _claimsRepo.ClaimTypeSwitch(claimTypeInt);
 
             Console.WriteLine("Describe the claim: ");
             var description = Console.ReadLine();
@@ -83,9 +78,9 @@ namespace Challenge_2
                 claimDate = GetDateAsString();
             }
 
-            Claim claim = new Claim(id, claimType, description, amount, claimDate, incidentDate);
+            Claim claim = new Claim(claimType, description, amount, claimDate, incidentDate);
 
-            _claimRepo.AddClaimToQueue(claim);
+            _claimsRepo.AddClaimToQueue(claim);
         }
 
         private void PrintMenu()
@@ -94,20 +89,16 @@ namespace Challenge_2
                 $"2. See Next Claim \n" +
                 $"3. Enter New Claim \n" +
                 $"4. Exit Menu");
-            var success = int.TryParse(Console.ReadLine(), out _response);
+            int.TryParse(Console.ReadLine(), out _response);
         }
 
-        private void SeedData()
-        {
-            _claimRepo.AddClaimToQueue(new Claim(1, TypeOfClaim.Car, "Accident on 65", 500.0m, "7/29/2018", "5/22/2018"));
-            _claimRepo.AddClaimToQueue(new Claim(2, TypeOfClaim.Car, "Flat tire", 125.0m, "7/25/2018", "6/30/2018"));
-        }
+       
 
         public string GetDateAsString()
         {
             Console.Write("Month #: ");
             bool isMonth = false;
-            int month = 0;
+            int month=0;
             while (!isMonth)
             {
                 isMonth = int.TryParse(Console.ReadLine(), out month);
@@ -115,7 +106,8 @@ namespace Challenge_2
                     Console.WriteLine("Please enter the month in the correct format:");
             }
             isMonth = false;
-            int day = 0;
+
+            int day=0;
             while (!isMonth)
             {
                 Console.Write("Date: ");
@@ -124,11 +116,20 @@ namespace Challenge_2
                 if (!isMonth)
                     Console.WriteLine("Please enter the day in the correct format:");
                 else if (month == 2 && day > 29)
+                {
                     Console.WriteLine("Please enter a correct date for february: ");
-                else if (GetMaxDaysBool(month) && day >= 31)
+                    isMonth = false;
+                }
+                else if (_claimsRepo.MonthHas31Days(month) && day >= 31)
+                {
                     Console.WriteLine("Please enter a date less than 31.");
-                else if (!GetMaxDaysBool(month) && day >= 30)
+                    isMonth = false;
+                }
+                else if (!_claimsRepo.MonthHas31Days(month) && day >= 30)
+                {
                     Console.WriteLine("Please enter a date less than 30.");
+                    isMonth = false;
+                }
             }
 
             Console.Write("Year: ");
@@ -137,14 +138,11 @@ namespace Challenge_2
             {
                 Console.WriteLine("Please enter the year in the correct format:");
                 year = Console.ReadLine();
+                Console.Clear();
             }
             return $"{month}/{day}/{year}";
         }
 
-        public bool GetMaxDaysBool(int month)
-        {
-            if (month % 2 != 0) return true;
-            else return false;
-        }
+        
     }
 }

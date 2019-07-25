@@ -1,13 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Challenge_2
 {
     public class ClaimRepository
     {
-        private readonly Queue<Claim> _claimsQueue = new Queue<Claim>();
+        private readonly Queue<Claim> _claimsQueue;
         private TypeOfClaim _type;
+        private int _index = 1;
 
+        public ClaimRepository()
+        {
+            _claimsQueue = new Queue<Claim>();
+            SeedData();
+
+        }
+        private void SeedData()
+        {
+            AddClaimToQueue(new Claim(TypeOfClaim.Car, "Accident on 65", 500.0m, "7/29/2018", "5/22/2018"));
+            AddClaimToQueue(new Claim(TypeOfClaim.Car, "Flat tire", 125.0m, "7/25/2018", "6/30/2018"));
+        }
         public Queue<Claim> GetClaims()
         {
             return _claimsQueue;
@@ -15,7 +26,9 @@ namespace Challenge_2
 
         public void AddClaimToQueue(Claim claim)
         {
+            claim.ClaimID = _index;
             _claimsQueue.Enqueue(claim);
+            _index++;
         }
 
         public Queue<Claim> RemoveQueueItem()
@@ -42,6 +55,12 @@ namespace Challenge_2
                     break;
             }
             return _type;
+        }
+
+        public bool MonthHas31Days(int month)
+        {
+            var longMonths = new List<int> { 1, 3, 5, 7, 8, 10, 12 };
+            return longMonths.Contains(month);
         }
     }
 }
