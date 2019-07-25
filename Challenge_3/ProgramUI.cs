@@ -5,15 +5,14 @@ namespace Challenge_3
 {
     public class ProgramUI
     {
-        OutingRepository _outingRepo = new OutingRepository();
-        List<Outing> _outings;
-        EventType _type;
-        int _response;
+        private readonly OutingRepository _outingRepo = new OutingRepository();
+        private List<Outing> _outings;
+        private EventType _type;
+        private int _response;
 
         public void Run()
         {
             _outings = _outingRepo.GetList();
-            _outingRepo.SeedData();
 
             while (_response != 5)
             {
@@ -44,7 +43,6 @@ namespace Challenge_3
                         _outingRepo.AddToList(outing);
                         break;
                     case 3:
-                        List<Outing> listByType = _outingRepo.GetNewListByType();
                         Console.WriteLine("Enter desired outing type: Golf = 1, Bowling = 2, Amusment Park = 3, Concert = 4, Other = 5");
                         var desiredType = int.Parse(Console.ReadLine());
                         var outingType = _outingRepo.EventTypeSwitch(desiredType);
@@ -75,7 +73,7 @@ namespace Challenge_3
                        $"4. Determine current cost for all outstanding outings\n" +
                        $"5. Exit Menu\n");
 
-            var cont = false;
+            bool cont;
             do
             {
                 Console.Write("Please enter the menu number for your desired option: ");

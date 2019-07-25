@@ -92,8 +92,6 @@ namespace Challenge_2
             int.TryParse(Console.ReadLine(), out _response);
         }
 
-       
-
         public string GetDateAsString()
         {
             Console.Write("Month #: ");
