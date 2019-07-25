@@ -79,5 +79,26 @@ namespace Challenge_2_Tests
             Assert.AreEqual(expected, actual);
         }
 
+        [DataTestMethod]
+        [DataRow(1, true)]
+        [DataRow(2, false)]
+        [DataRow(3, true)]
+        [DataRow(4, false)]
+        [DataRow(5, true)]
+        [DataRow(6, false)]
+        [DataRow(7, true)]
+        [DataRow(8, true)]
+        [DataRow(9, false)]
+        [DataRow(10, true)]
+        [DataRow(11, false)]
+        [DataRow(12, true)]
+        public void ClaimRepo_MonthHas31Days_ReturnsTrueForCorrectMonths(int monthResponse, bool expected)
+        {
+            var month = monthResponse;
+            var actual = _claimRepoTest.MonthHas31Days(month);
+            
+            Assert.AreEqual(expected, actual,$"Month: {month}");
+        }
+
     }
 }

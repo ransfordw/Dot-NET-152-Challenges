@@ -56,5 +56,11 @@ namespace Challenge_2
             }
             return _type;
         }
+
+        public bool MonthHas31Days(int month)
+        {
+            var longMonths = new List<int> { 1, 3, 5, 7, 8, 10, 12 };
+            return longMonths.Contains(month);
+        }
     }
 }

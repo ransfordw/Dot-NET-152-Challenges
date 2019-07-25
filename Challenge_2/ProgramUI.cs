@@ -120,12 +120,12 @@ namespace Challenge_2
                     Console.WriteLine("Please enter a correct date for february: ");
                     isMonth = false;
                 }
-                else if (MonthHas31Days(month) && day >= 31)
+                else if (_claimsRepo.MonthHas31Days(month) && day >= 31)
                 {
                     Console.WriteLine("Please enter a date less than 31.");
                     isMonth = false;
                 }
-                else if (!MonthHas31Days(month) && day >= 30)
+                else if (!_claimsRepo.MonthHas31Days(month) && day >= 30)
                 {
                     Console.WriteLine("Please enter a date less than 30.");
                     isMonth = false;
@@ -138,14 +138,11 @@ namespace Challenge_2
             {
                 Console.WriteLine("Please enter the year in the correct format:");
                 year = Console.ReadLine();
+                Console.Clear();
             }
             return $"{month}/{day}/{year}";
         }
 
-        public bool MonthHas31Days(int month)
-        {
-            if (month == 2) return false;
-            return month % 2 != 0;
-        }
+        
     }
 }
