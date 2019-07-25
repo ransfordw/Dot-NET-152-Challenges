@@ -89,7 +89,7 @@ namespace Challenge_2
                 $"2. See Next Claim \n" +
                 $"3. Enter New Claim \n" +
                 $"4. Exit Menu");
-            var success = int.TryParse(Console.ReadLine(), out _response);
+            int.TryParse(Console.ReadLine(), out _response);
         }
 
        
@@ -98,7 +98,7 @@ namespace Challenge_2
         {
             Console.Write("Month #: ");
             bool isMonth = false;
-            int month = 0;
+            int month=0;
             while (!isMonth)
             {
                 isMonth = int.TryParse(Console.ReadLine(), out month);
@@ -106,7 +106,8 @@ namespace Challenge_2
                     Console.WriteLine("Please enter the month in the correct format:");
             }
             isMonth = false;
-            int day = 0;
+
+            int day=0;
             while (!isMonth)
             {
                 Console.Write("Date: ");
@@ -115,11 +116,20 @@ namespace Challenge_2
                 if (!isMonth)
                     Console.WriteLine("Please enter the day in the correct format:");
                 else if (month == 2 && day > 29)
+                {
                     Console.WriteLine("Please enter a correct date for february: ");
-                else if (GetMaxDaysBool(month) && day >= 31)
+                    isMonth = false;
+                }
+                else if (MonthHas31Days(month) && day >= 31)
+                {
                     Console.WriteLine("Please enter a date less than 31.");
-                else if (!GetMaxDaysBool(month) && day >= 30)
+                    isMonth = false;
+                }
+                else if (!MonthHas31Days(month) && day >= 30)
+                {
                     Console.WriteLine("Please enter a date less than 30.");
+                    isMonth = false;
+                }
             }
 
             Console.Write("Year: ");
@@ -132,10 +142,10 @@ namespace Challenge_2
             return $"{month}/{day}/{year}";
         }
 
-        public bool GetMaxDaysBool(int month)
+        public bool MonthHas31Days(int month)
         {
-            if (month % 2 != 0) return true;
-            else return false;
+            if (month == 2) return false;
+            return month % 2 != 0;
         }
     }
 }
