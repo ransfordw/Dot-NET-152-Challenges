@@ -78,13 +78,16 @@ namespace Challenge_5_Tests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
-        public void CustomerRepository_GetCustomerStatus_ShouldReturnCorrectStatus()
+        [DataTestMethod]
+        [DataRow("Potential", CustomerStatus.Potential)]
+        [DataRow("potential", CustomerStatus.Potential)]
+        [DataRow("Current", CustomerStatus.Current)]
+        [DataRow("current", CustomerStatus.Current)]
+        [DataRow("Past", CustomerStatus.Past)]
+        [DataRow("past", CustomerStatus.Past)]
+        public void CustomerRepository_GetCustomerStatus_ShouldReturnCorrectStatus(string input, CustomerStatus expected)
         {
-            string s = "Potential";
-
-            var actual = _customerRepoTest.GetCustomerStatus(s);
-            var expected = CustomerStatus.Potential;
+            var actual = _customerRepoTest.GetCustomerStatus(input);
 
             Assert.AreEqual(expected, actual);
         }

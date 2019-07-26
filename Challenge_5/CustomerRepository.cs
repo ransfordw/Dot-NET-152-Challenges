@@ -64,10 +64,10 @@ namespace Challenge_5
 
         public CustomerStatus GetCustomerStatus(string input)
         {
-            input.ToLower();
-            if (input.Contains("cu"))
+            var inputToLower = input.ToLower();
+            if (inputToLower.Contains("cu"))
                 _status = CustomerStatus.Current;
-            else if (input.Contains("pa"))
+            else if (inputToLower.Contains("pa"))
                 _status = CustomerStatus.Past;
             else
                 _status = CustomerStatus.Potential;
