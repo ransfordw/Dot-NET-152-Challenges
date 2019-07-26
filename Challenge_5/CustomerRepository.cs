@@ -24,7 +24,7 @@ namespace Challenge_5
             if (customer != null)
                 _customers.Add(customer);
             else
-                throw new Exception("Customer did not exist");
+                throw new ArgumentNullException("Customer did not exist", new Exception());
         }
 
         public string GetEmailResponse(CustomerStatus status)

@@ -1,5 +1,6 @@
 ﻿using Challenge_5;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 
 namespace Challenge_5_Tests
@@ -10,6 +11,7 @@ namespace Challenge_5_Tests
         private CustomerRepository _customerRepoTest;
         private Customer _customer;
         private Customer _customerTwo;
+        private Customer _customerThree;
         private List<Customer> _customers;
         private CustomerStatus _status;
 
@@ -22,7 +24,7 @@ namespace Challenge_5_Tests
         }
 
         [TestMethod]
-        public void CustomerRepository_AddCustomerToList()
+        public void CustomerRepository_AddCustomerToList_ShouldIncreaseCountByOne()
         {
             _customers = _customerRepoTest.GetCustomerList();
             _customerRepoTest.AddCustomerToList(_customer);
@@ -31,6 +33,13 @@ namespace Challenge_5_Tests
             var expected = 1;
 
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void CustomerRepository_AddCustomerToList_ShouldThrowCorrectException()
+        {
+            _customerRepoTest.AddCustomerToList(_customerThree);
         }
 
         [TestMethod]
@@ -56,6 +65,13 @@ namespace Challenge_5_Tests
             var expected = 1;
 
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception), "Cannot find the desired customer. No need to remove")]
+        public void CustomerCustomerRepository_RemoveCustomerFromList_ShouldThrowCorrectError()
+        {
+            _customerRepoTest.RemoveCustomerFromList(_customer.Name);
         }
 
         [TestMethod]
