@@ -2,7 +2,7 @@
 
 namespace Challenge_3
 {
-    public interface IOutings
+    public interface IOutingRepository
     {
         List<Outing> GetList();
         List<Outing> GetNewListByType();

@@ -56,5 +56,11 @@
   <ItemGroup>
     <Content Include="Outing.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Challenge_UtilityMethods\Challenge_UtilityMethods.csproj">
+      <Project>{7EFCB53D-C069-4ADA-9670-9A584700697A}</Project>
+      <Name>Challenge_UtilityMethods</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
