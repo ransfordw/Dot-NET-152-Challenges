@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Challenge_5
 {
     public class CustomerRepository
     {
-        private List<Customer> _customers = new List<Customer>();
+        private readonly List<Customer> _customers;
         private string _emailResponse;
         private CustomerStatus _status;
 
+        public CustomerRepository()
+        {
+            _customers = new List<Customer>();
+        }
         public List<Customer> GetCustomerList()
         {
             return _customers;
@@ -16,7 +21,10 @@ namespace Challenge_5
 
         public void AddCustomerToList(Customer customer)
         {
-            _customers.Add(customer);
+            if (customer != null)
+                _customers.Add(customer);
+            else
+                throw new Exception("Customer did not exist");
         }
 
         public string GetEmailResponse(CustomerStatus status)
@@ -40,13 +48,15 @@ namespace Challenge_5
 
         public void RemoveCustomerFromList(string name)
         {
-            var remove = _customers.Single(c => c.Name == name);
-            _customers.Remove(remove);
+            if(!_customers.Exists(c => c.Name ==name))
+              throw new Exception("Cannot find the desired customer. No need to remove");
+
+            _customers.Remove(_customers.Single(c => c.Name == name));
         }
 
         public bool YesNoResponse(string input)
         {
-            if (input.Contains("y"))
+            if (input.ToLower().Contains("y"))
                 return true;
             else
                 return false;
