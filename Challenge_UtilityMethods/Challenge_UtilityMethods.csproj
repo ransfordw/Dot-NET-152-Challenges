@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IConsole.cs" />
+    <Compile Include="MockConsole.cs" />
+    <Compile Include="RealConsole.cs" />
     <Compile Include="UtilityMethodRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

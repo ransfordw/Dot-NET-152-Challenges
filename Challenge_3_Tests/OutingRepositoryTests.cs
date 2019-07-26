@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Challenge_3_Tests
 {
     [TestClass]
-    public class Challenge_3_Tests
+    public class OutingRepositoryTests
     {
         private OutingRepository _outingRepoTest;
         private Outing royalPin;
