@@ -7,6 +7,7 @@ namespace Challenge_6
     {
         private readonly List<Car> _cars;
         private CarType _type;
+        private int _index = 1;
 
         public CarRepository()
         {
@@ -47,11 +48,13 @@ namespace Challenge_6
         {
             Car newCar = new Car()
             {
+                CarID = _index,
                 CarMake = make,
                 CarModel = model,
                 FuelType = type,
                 MilesPer = fuelage
             };
+            _index++;
             return newCar;
         }
 
