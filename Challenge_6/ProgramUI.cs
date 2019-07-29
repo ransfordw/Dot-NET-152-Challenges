@@ -131,10 +131,10 @@ namespace Challenge_6
 
         private static void PrintCars()
         {
-            Console.WriteLine("Car ID\t Car Make \tModel \t Fuel Type \t Miles Per Fuel Unit");
+            Console.WriteLine("{0,8} {1,12} {2,12} {3,12} {4,22}", "Car ID", "Car Make", "Model", "Fuel Type", "Miles Per Fuel Unit");
 
             foreach (var c in _cars)
-                Console.WriteLine($"{c.CarID} \t{c.CarMake} \t{c.CarModel} \t{c.FuelType} \t{c.MilesPer}");
+                Console.WriteLine("{0,8} {1,12} {2,12} {3,12} {4,22}", c.CarID, c.CarMake, c.CarModel, c.FuelType, c.MilesPer);
         }
         private static int SelectCarFromMenu()
         {
