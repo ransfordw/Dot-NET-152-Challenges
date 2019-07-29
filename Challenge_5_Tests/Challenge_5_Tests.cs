@@ -11,7 +11,6 @@ namespace Challenge_5_Tests
         private CustomerRepository _customerRepoTest;
         private Customer _customer;
         private Customer _customerTwo;
-        private Customer _customerThree;
         private List<Customer> _customers;
         private CustomerStatus _status;
 
@@ -39,7 +38,8 @@ namespace Challenge_5_Tests
         [ExpectedException(typeof(ArgumentNullException))]
         public void CustomerRepository_AddCustomerToList_ShouldThrowCorrectException()
         {
-            _customerRepoTest.AddCustomerToList(_customerThree);
+            Customer customer = null;
+            _customerRepoTest.AddCustomerToList(customer);
         }
 
         [TestMethod]
