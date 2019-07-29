@@ -1,11 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Challenge_6
 {
     public class CarRepository
     {
-        private List<Car> _cars = new List<Car>();
+        private readonly List<Car> _cars;
         private CarType _type;
+
+        public CarRepository()
+        {
+            _cars = new List<Car>();
+        }
 
         public List<Car> GetCarList()
         {
@@ -14,7 +20,10 @@ namespace Challenge_6
 
         public void AddCarToList(Car car)
         {
-            _cars.Add(car);
+            if (car != null)
+                _cars.Add(car);
+            else
+                throw new NullReferenceException("There was no information for the desired car");
         }
 
         public CarType GetFuelType(int fuelInput)
@@ -48,8 +57,7 @@ namespace Challenge_6
 
         public bool YesNoResponse(string response)
         {
-            response.ToLower();
-            if (response.Contains("y"))
+            if (response.ToLower().Contains("y"))
                 return true;
             else
                 return false;
@@ -57,7 +65,10 @@ namespace Challenge_6
 
         public void RemoveCar(Car c)
         {
-            _cars.Remove(c);
+            if (_cars.Contains(c))
+                _cars.Remove(c);
+            else
+                throw new Exception("The car did not exist.");
         }
     }
 }
