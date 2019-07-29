@@ -1,12 +1,25 @@
 ﻿using Challenge_6;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
 
 namespace Challenge_6_Tests
 {
     [TestClass]
     public class Challenege_6_Tests
     {
-        private CarRepository _carRepo = new CarRepository();
+        private readonly CarRepository _carRepo = new CarRepository();
+
+        [TestMethod]
+        public void CarRepository_Constructor_ShouldNotThrowException()
+        {
+            var testRepo = new CarRepository();
+
+            var actual = testRepo.GetCarList();
+            var expected = new List<Car>();
+
+            Assert.AreEqual(actual.ToString(), expected.ToString());
+        }
 
         [TestMethod]
         public void CarRepository_AddCarToList_ShouldIncreaseCountByOne()
@@ -22,6 +35,13 @@ namespace Challenge_6_Tests
 
             //--Assert
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException), "There was no information for the desired car")]
+        public void CarRepository_AddCarToList_ShouldThrowCorrectException()
+        {
+            _carRepo.AddCarToList(null);
         }
 
         [TestMethod]
@@ -86,6 +106,21 @@ namespace Challenge_6_Tests
 
             //--Assert
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception), "The car did not exist.")]
+        public void CarRepository_RemoveCar_ShouldThrowException()
+        {
+            _carRepo.AddCarToList(new Car());
+            _carRepo.RemoveCar(new Car());
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException), "Cannont remove \"null\" from list.")]
+        public void CarRepository_RemoveCar_ShouldThrowNullRefException()
+        {
+            _carRepo.RemoveCar(null);
         }
     }
 }

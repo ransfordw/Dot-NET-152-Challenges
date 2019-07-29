@@ -65,6 +65,8 @@ namespace Challenge_6
 
         public void RemoveCar(Car c)
         {
+            if (c == null)
+                throw new NullReferenceException("Cannont remove \"null\" from list.");
             if (_cars.Contains(c))
                 _cars.Remove(c);
             else
