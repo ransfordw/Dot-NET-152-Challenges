@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading;
 
 namespace Challenge_1
@@ -75,11 +76,24 @@ namespace Challenge_1
         private void PrintMeals()
         {
             int i = 1;
+            Console.WriteLine("{0,-25} {1,-6} {2,-25} {3,-25} {4,-6}", "Menu Item", "Number", "Description", "Ingredients", "Price");
             foreach (MenuItem meal in _menuItems)
             {
-                Console.WriteLine($"Menu item: {meal.MealName} \n Meal Number: {i} \n Description: {meal.Description} \n Ingredients: {meal.Ingredients} \n Price: {meal.MealPrice}");
+                string name = SetStringMaxLengthToValue(meal.MealName, 25);
+                string description = SetStringMaxLengthToValue(meal.Description, 25);
+                string ingredients = SetStringMaxLengthToValue(meal.Ingredients, 25);
+
+                Console.WriteLine("{0,-25} {1,-6} {2,-25} {3,-25} {4,-6}", name, i, description, ingredients, $"${meal.MealPrice:N2}");
                 i++;
             }
+        }
+
+        private string SetStringMaxLengthToValue(string someString, int maxLength)
+        {
+            var sb = new StringBuilder();
+            if (someString.Length >= maxLength) return sb.Append(someString.Substring(0, maxLength - 3) + "...").ToString();
+            return someString;
+
         }
 
         private void PrintMenu()
